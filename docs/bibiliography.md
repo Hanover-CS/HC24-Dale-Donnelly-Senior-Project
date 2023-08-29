@@ -1,0 +1,4 @@
+- letterboxd.com
+- imdb.com
+- themoviedb.org
+- rottentomatoes.com
