@@ -33,13 +33,14 @@
 - The Open Movie Databse is an alternative to the TMDB API that is also free. However, it seems to be maintained by a smaller team, so some features are locked behind paywalls.
 
 ## [AngularJS](https://angularjs.org/)
-- A JavaScript framework develped an maintained by Google that is designed for dynamic webpages.
+- A JavaScript framework develped and maintained by Google that is designed for dynamic webpages.
 
 ## [React](https://react.dev/)
-- A JavaSCript framework that allows for UI to be built out of individual, reusable components.
+- A JavaScript framework that allows for UI to be built out of individual, reusable components.
 
 ## [Next](https://nextjs.org/)
 - A full-stack JavaScript framework that extends to functionality of React.
-
+- Next has alot of useful features and the reusable component syntax of React seems very effective. Some of the useful features that stood out include tools for dynamic urls, creating pages dynamically from formatted files, and hooking in outside data sources like databases or APIs.
+- The file structure necessary to utilize some features can be a little verbose and very heavily nested.
 ## [TypeScript](https://www.typescriptlang.org/)
 - An alternate language to JavaScript with all of the same functionality and the addition of strong type system for data.
