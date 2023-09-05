@@ -42,5 +42,6 @@
 - A full-stack JavaScript framework that extends to functionality of React.
 - Next has alot of useful features and the reusable component syntax of React seems very effective. Some of the useful features that stood out include tools for dynamic urls, creating pages dynamically from formatted files, and hooking in outside data sources like databases or APIs.
 - The file structure necessary to utilize some features can be a little verbose and very heavily nested.
+
 ## [TypeScript](https://www.typescriptlang.org/)
 - An alternate language to JavaScript with all of the same functionality and the addition of strong type system for data.
