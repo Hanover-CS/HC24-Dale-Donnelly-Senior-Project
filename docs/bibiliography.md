@@ -14,7 +14,7 @@
 - IMdB is both very information forward, with less focus on reviews. Things like cast, crew, and promotional material take predence over reviews and discussion.
 - Profile are basic. The pages display user reviews in a timeline as well as showing recently viewed pages for programs.
 
-### [The Movie Database](https://www.themoviedb.org/?language=en-US)
+### [The Movie Database (TMDB)](https://www.themoviedb.org/?language=en-US)
 - Follows a similar format to IMDb that puts production information above reviews though they seem more relevant than on IMDb.
 - Offers individual forums for programs to create dedicated discussion posts.
 - Can display rating information such as score distribution and how often the movie has been reviewed.
@@ -34,6 +34,9 @@
 
 ## [AngularJS](https://angularjs.org/)
 - A JavaScript framework develped and maintained by Google that is designed for dynamic webpages.
+
+## [Angular](https://angular.io)
+- A complete rewrite of AngularJS that is TypeScript-based.
 
 ## [React](https://react.dev/)
 - A JavaScript framework that allows for UI to be built out of individual, reusable components.
