@@ -5,9 +5,13 @@
 ## Competing Services
 
 ### Letterboxd
+Letterboxd is a service promoting "grass-roots" film discussion. They allow users to rate and review movies but also maintain a diary where they can add movies they've seen and the date they saw them. However, it only offers movies in it's library, with few select limited-run television and/or streaming series being offered for users to discuss alongside movies.
+
 ### IMDb
-### The Movie Database
+IMDb primarily operates as a database for information about movies and tv. Though the service allows users to post reviews, the focus seems to be on information such as cast & crew and promotional materials.
+
 ### Rotten Tomatoes
+Rotten Tomatoes, known for it's Tomatometer feature, lets users review movies and tv and dispalys a public audience score on individual pages. However, those pages are largely dedicated to curated certified critic reviews and the overall critic score which is the metric by which the Tomatometer "freshness" is determined.
 
 ## Languages, Frameworks, & Tools
 
