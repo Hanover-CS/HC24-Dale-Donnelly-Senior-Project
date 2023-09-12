@@ -27,8 +27,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "baseHref": "/dist/"
+            "scripts": []
           },
           "configurations": {
             "production": {
