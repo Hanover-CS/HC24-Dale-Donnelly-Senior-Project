@@ -1,45 +1,20 @@
 # Bibliography
 
 ## Competing Services
-1. [Letterboxd](https://letterboxd.com/welcome)
-- Letterboxd does not offer TV shows (apart from select limited series) for users to review.
-- Has a very non-mainstream heavy lineup on the homepage when using the site as an unregistered user.
-- Offers a diary service for users to track what movies they've watched over the course of their memberships.
-- Users can mark a movie as watched without having to leave a review.
-- Users are able to add films to watchlists and share them on the site.
-- Users can reply to each others reviews and comments in lieu of forums.
-- Profiles display favorites as well recently reviewed films with an aside containing tangential information like score distribution and diary check-ins.
+1. [Letterboxd](https://letterboxd.com/welcome), a primary source, is a website that lets users rate and review movies with few tv/streaming series available. It's a competing service in that it is a site for reviewing and discussing film. It has a very complete set of features for doing so as well. Beside rating and reviewing with a star system and a written review, users can mark films as watched and even maintain a diary for marking when they saw a film. It seems to cater to  the "film-buff" crowd showing off smaller, less mainstream movies on its homepage (though mainstream titles are available).
 
-2. [IMDb](https://www.imdb.com/?ref_=nv_home)
-- IMdB is both very information forward, with less focus on reviews. Things like cast, crew, and promotional material take predence over reviews and discussion.
-- Profile are basic. The pages display user reviews in a timeline as well as showing recently viewed pages for programs.
+2. [IMDb](https://www.imdb.com/?ref_=nv_home), a primary source competing service, is large platform primarily focused on delivering information about movies and tv. They even offer an API through AWS to pull this information. There is much less of a focus on user reviews and discussion, though there are still options to do so.
 
-3. [Rotten Tomatoes](https://www.rottentomatoes.com/)
-- Focuses more on showing professional critic reviews as opposed to user reviews. They exist on the site, but are just far more buried.
-- User pages for critics display an associated publication, and a neat timeline of reviews containing ratings, title, and reviews in a timeline.
-- User pages for non-critics shows curated watchlists as well what movies have been reviewed with a visible star rating, but the users written reviews are not visible.
+3. [Rotten Tomatoes](https://www.rottentomatoes.com/), a primary source, is a competing service for rating and reviewing programs. The site largely seems to cater towards professional critic reviews, which are used to determine the sites "Tomatometer" score feature. Other users can still leave reviews and an audience score is displayed but it feels much less important.
 
 ## Development Resources
-4. [TypeScript](https://www.typescriptlang.org/)
-- An alternate language to JavaScript with all of the same functionality and the addition of strong type system for data.
+1. [TypeScript](https://www.typescriptlang.org/), an alternate language to JavaScript with all of the same functionality and the addition of strong type system for data. Practically required by Angular.
 
-5. [Angular](https://angular.io)
-- A complete rewrite of AngularJS that is TypeScript-based.
+2. [Angular](https://angular.io), a complete rewrite of AngularJS that is TypeScript-based which fffers many tools for web app development.
 
-6. [TMDB API](https://developer.themoviedb.org/docs)
-- The Movie Database offers a free API that could be used to retrieve information on movies & TV for use in my program.
+3. [TMDB API](https://developer.themoviedb.org/docs), an API from [The Movie Database](https://www.themoviedb.org/), that offers a free service for retrieving information on movies & TV.
 
-7. [The Movie Database (TMDB)](https://www.themoviedb.org/?language=en-US)
-- Follows a similar format to IMDb that puts production information above reviews though they seem more relevant than on IMDb.
-- Offers individual forums for programs to create dedicated discussion posts.
-- Can display rating information such as score distribution and how often the movie has been reviewed.
-- User profiles are very limited. They show how many reviews someone has made and distribution of scores across the ratings as well as any watchlists they've created.
+### Considered Development Resources 
+1. [React](https://react.dev/), a JavaScript framework that allows for UI to be built out of individual, reusable components.
 
-## 
-8. [React](https://react.dev/)
-- A JavaScript framework that allows for UI to be built out of individual, reusable components.
-
-9. [Next](https://nextjs.org/)
-- A full-stack JavaScript framework that extends to functionality of React.
-- Next has alot of useful features and the reusable component syntax of React seems very effective. Some of the useful features that stood out include tools for dynamic urls, creating pages dynamically from formatted files, and hooking in outside data sources like databases or APIs.
-- The file structure necessary to utilize some features can be a little verbose and very heavily nested.
+2. [Next](https://nextjs.org/), a framework that extends the functionality of JavaScript UI frameworks such as React.

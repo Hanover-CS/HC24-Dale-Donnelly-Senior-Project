@@ -24,7 +24,7 @@ Rotten Tomatoes, known for it's Tomatometer feature, lets users review movies an
 
 In contrast to Rotten Tomatoes, I would like my website to cater more towards user reviews. For instance, instead of displaying a score or "freshness" based off of critic reviews it could instead be calculated by averaging user ratings.
 
-## Languages, Frameworks, & Tools
+## Development Resouces
 ### [TypeScript](https://www.typescriptlang.org/) [4]
 While TypeScript is not necessarily required by Angular, it is the popular (and default) choice when using the framework.
 
@@ -34,7 +34,7 @@ Angular offers a very complete ecosystem for developing a web app. It provides a
 ### [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) [6]
 The Movie Database offers an API for both movies and tv and has high rate limiting. There are even some open-source JavaScript libraries to simplify access. [The Movie Database](https://www.themoviedb.org/?language=en-US) [7] also maintains a site similar to what I want to develop, so could also be considered a competing service. However, because I plan on utilizing their API to retrieve information I decided to omit them from that section.
  
-## Considered Frameworks
+## Considered Development Resouces
 ### [React](https://react.dev/) [8]
 Both React and Angular are very serviceable frameworks for building a frontend with somewhat similar ideologies about small, reusable, programatic components. In the end, the choice to use Angular came down to preference. The strucuture and decomposition of Angular components and how to make them work together ultimately made more sense to me. React also lacks much of the built-in functionality that Angular offers.
 ### [Next.js](https://nextjs.org/) [9]
