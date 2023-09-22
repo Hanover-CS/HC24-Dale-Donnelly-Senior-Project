@@ -24,8 +24,7 @@
               "src/favicon.ico",
               "src/assets",
               { "glob": "**/*", "input": "../docs", "output": "./docs"},
-              { "glob": "_config.yml", "input": "..", "output": "." },
-              "src/assets/data/movies.json"
+              { "glob": "_config.yml", "input": "..", "output": "." }
             ],
             "styles": [
               "src/styles.css"
