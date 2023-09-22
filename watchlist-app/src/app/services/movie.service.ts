@@ -24,7 +24,7 @@ export class MovieService {
           id: m.id,
           title: m.title,
           overview: m.overview,
-          imagePath: m.poster_path,
+          imagePath: `https://image.tmdb.org/t/p/w220_and_h330_face${m.poster_path}`,
           releaseDate: m.release_date,
           genreIds: m.genre_ids
         })
