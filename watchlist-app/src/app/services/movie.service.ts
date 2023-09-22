@@ -13,7 +13,7 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   private getJSON() {
-    return this.http.get<any>('../../assets/data/movies.json');
+    return this.http.get<any>('assets/data/movies.json');
   }
 
   private populateMovieData() {
