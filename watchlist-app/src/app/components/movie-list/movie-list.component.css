@@ -1,0 +1,12 @@
+ul {
+    display: flex;  
+    overflow: auto;
+    list-style-type: none;
+    margin: 0;
+    margin-block: 0;
+    padding-inline: 0;
+}
+
+li { 
+    flex-direction: row;
+}
