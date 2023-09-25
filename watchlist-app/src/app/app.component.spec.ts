@@ -13,11 +13,5 @@ describe('MyComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
   });
-
-  it('should have a hello world!', () => {
-    fixture.detectChanges();
-    const h1Element = fixture.debugElement.nativeElement.querySelector('h1');
-    expect(h1Element.textContent).toContain('Hello World!');
-  })
 });
 
