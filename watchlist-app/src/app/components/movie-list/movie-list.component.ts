@@ -10,5 +10,5 @@ import { MovieService } from 'src/app/services/movie.service';
 export class MovieListComponent {
   constructor(private movieService: MovieService) {}
 
-  movies: MovieData[] = this.movieService.getMovieData();
+  movies: MovieData[] = this.movieService.getAllMovieData();
 }

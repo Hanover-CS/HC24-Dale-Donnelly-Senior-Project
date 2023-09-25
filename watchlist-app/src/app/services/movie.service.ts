@@ -8,7 +8,7 @@ import { MovieData } from 'src/lib/types/MovieData';
 })
 export class MovieService {
   movieJson: any;
-  movieData: MovieData[] = [];
+  movieData: MovieData[] = this.retrieveMovies();
 
   constructor(private http: HttpClient) { }
 
@@ -16,11 +16,12 @@ export class MovieService {
     return this.http.get<any>('assets/data/movies.json');
   }
 
-  private populateMovieData() {
+  private retrieveMovies(): MovieData[] {
+    const movies: MovieData[] = []
     this.getJSON().subscribe(data => {
       this.movieJson = data;
       for (const m of this.movieJson.results) {
-        this.movieData.push({
+        movies.push({
           id: m.id,
           title: m.title,
           overview: m.overview,
@@ -30,10 +31,10 @@ export class MovieService {
         })
       }
     })
+    return movies;
   }
 
-  getMovieData(): MovieData[] {
-    this.populateMovieData()
+  getAllMovieData(): MovieData[] {
     return this.movieData;
   }
 
