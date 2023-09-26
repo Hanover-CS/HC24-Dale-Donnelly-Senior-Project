@@ -38,4 +38,8 @@ export class MovieService {
     return this.movieData;
   }
 
+  getMovieById(id: Number): MovieData {
+    const movie = this.movieData.filter((m) => m.id === id);
+    return movie[0];
+  }
 }
