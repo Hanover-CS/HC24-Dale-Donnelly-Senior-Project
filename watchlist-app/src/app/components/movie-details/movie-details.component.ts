@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+
 import { MovieService } from 'src/app/services/movie.service';
 import { MovieData } from 'src/lib/types/MovieData';
 
@@ -14,5 +15,13 @@ export class MovieDetailsComponent {
 
   route: ActivatedRoute = inject(ActivatedRoute);
   movieId = Number(this.route.snapshot.params['id']);
-  movie: MovieData = this.movieService.getMovieById(this.movieId);
+  movie !: MovieData
+
+  ngOnInit() {
+    this.movieService.getMovieById(this.movieId).subscribe(
+      (movie=> {
+          this.movie = movie
+        })
+    )
+  }
 }
