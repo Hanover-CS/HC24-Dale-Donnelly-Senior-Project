@@ -2,11 +2,20 @@
 ## Overview
 Watchlist aims to be a place for discussion of opinions on films and tv above all else. Of course, there are plenty of similar services that offer similar options. However, those other services often fall into niche categories. Some are hubs for film, and _only_ film, discussion. Others provide lots of production information and statictics while downplaying user reviews and discussion. And some even highlight professional critic reviews  over general audience reactions. Wathclist, on the other hand, aims to be a site for open discussion of films and tv shows where users can rate, review, and _respond_ to each other's opinions.
 
-To best facilitate discussion, users will be able to:
-- Rate and reviews a wide seleciton of movies and tv,
+To best facilitate discussion, users will ideally be able to:
+- Rate and review a wide seleciton of movies and tv,
 - Reply to reviews so as to create pseudo-discussion forums in the reviews section for any given program,
-- Create accounts to curate their own watchlist of rated and reviews programs,
+- Create accounts to curate their own watchlist of rated and reviewed programs,
 - Publically view other ratings and reviews on both user and program specific pages.
+
+### Demo-Day Functionality
+To demonstrate my progress on building this service, by demo-day I would like for users to be able to:
+- View by-genre, organized lists of programs on the homepage of the app
+- Search for progams by title or by genre and view matching programs
+- Select and view programs from both movies and TV with basic details available
+- Write and leave a persistent review for a program
+- Select a score and leave a persistent rating for a program
+- View an average rating from calulated from user ratings
 
 ## Competing Services
 ### [Letterboxd](https://letterboxd.com/welcome) [1]
