@@ -4,6 +4,25 @@
     <div>{{movie.overview}}</div>
     <div>{{movie.releaseDate}}</div>
     <div>{{movie.genreIds}}</div>
+    <div id="reviewSection">
+        <h3>Reviews</h3>
+        <ul id="reviewList">
+            <li>reviews go here</li>
+        </ul>
+        <form>
+            <h4>Leave a Review:</h4>
+            <span>Select a Rating:
+                <select #rating>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </span>
+            <textarea id="reviewText" placeholder="Type your review here..." rows="5" cols="60" #content></textarea>
+            <button (click)="postReview(rating.value, content.value)">Post Review</button>
+        </form>
+    </div>
 </div>
-
 <ng-template #elseBlock>Looking for movie...</ng-template>
