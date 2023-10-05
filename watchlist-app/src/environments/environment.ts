@@ -1,11 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'donnelly-senior-project',
-    appId: '1:234151376055:web:5965fb904822fd70cd0932',
-    storageBucket: 'donnelly-senior-project.appspot.com',
-    apiKey: 'AIzaSyDDpux_ld3EHARIZoCKIxVLI0L1MHe3LpA',
-    authDomain: 'donnelly-senior-project.firebaseapp.com',
-    messagingSenderId: '234151376055',
-    measurementId: 'G-MRCK7G552J',
+    apiKey: "AIzaSyDDpux_ld3EHARIZoCKIxVLI0L1MHe3LpA",
+    authDomain: "donnelly-senior-project.firebaseapp.com",
+    projectId: "donnelly-senior-project",
+    storageBucket: "donnelly-senior-project.appspot.com",
+    messagingSenderId: "234151376055",
+    appId: "1:234151376055:web:eb279755d5f655bbcd0932",
+    measurementId: "G-DR4DWEXXFM"
   },
 };
