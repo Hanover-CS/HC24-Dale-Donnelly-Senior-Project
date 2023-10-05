@@ -4,12 +4,10 @@ export class Review {
     programId: number
     date: string
 
-    constructor(content: string, rating: number, programId: number) {
+    constructor(content: string, rating: number, programId: number, date: string) {
         this.content = content;
         this.rating = rating;
         this.programId = programId;
-
-        const date = new Date();
-        this.date = `${date.getUTCDay()+1}/${date.getUTCMonth()+1}/${date.getUTCFullYear}`
+        this.date = date;
     }
 }

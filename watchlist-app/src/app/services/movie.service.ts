@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, of, filter } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import { MovieData } from 'src/lib/types/MovieData';
 

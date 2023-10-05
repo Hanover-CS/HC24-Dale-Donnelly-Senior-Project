@@ -7,7 +7,9 @@
     <div id="reviewSection">
         <h3>Reviews</h3>
         <ul id="reviewList">
-            <li>reviews go here</li>
+            <li *ngFor="let r of reviews | async">
+                <span>{{r.content}}</span>
+            </li>
         </ul>
         <form>
             <h4>Leave a Review:</h4>
