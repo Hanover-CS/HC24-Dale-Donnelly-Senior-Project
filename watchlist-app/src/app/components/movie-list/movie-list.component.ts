@@ -10,13 +10,11 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent {
-  movies !: MovieData[]
+  movies !: Observable<MovieData[]>
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
-    this.movieService.getAllMovies().subscribe(
-      (movies => this.movies = movies)
-    )
+    this.movies = this.movieService.getAllMovies()
   }
 }

@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let m of movies">
+    <li *ngFor="let m of movies | async">
         <app-movie [movie]="m"></app-movie>
     </li>
 </ul>
