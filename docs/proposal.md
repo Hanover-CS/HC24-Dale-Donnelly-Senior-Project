@@ -15,7 +15,8 @@ To demonstrate my progress on building this service, by demo-day I would like fo
 - Select and view programs from both movies and TV with basic details available
 - Write and leave a persistent review for a program
 - Select a score and leave a persistent rating for a program
-- View an average rating from calulated from user ratings
+- View an average rating calulated from user ratings.
+- "React" to revies (thumbs up/down) with visible metrics
 
 ## Competing Services
 ### [Letterboxd](https://letterboxd.com/welcome) [1]
