@@ -9,10 +9,7 @@ import { Review } from 'src/lib/types/Review';
 export class ReviewService {
   reviews !: Observable<Review[]>
 
-  constructor(private firestore: Firestore) { 
-    console.log(this.firestore)
-    console.log(this.firestore.type);
-  }
+  constructor(private firestore: Firestore) {}
 
   getAllReviews() {
     let reviewCollection = collection(this.firestore, 'reviews');
