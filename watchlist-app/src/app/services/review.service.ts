@@ -26,11 +26,12 @@ export class ReviewService {
   getReviewsForMovie(movieId: number) {
     this.getAllReviews();
     return this.reviews.pipe(
-      map(reviews => reviews.filter((r: Review) => r.programId === movieId))
+      map(reviews => reviews.filter((r: Review) => r.movieId === movieId))
     )
   }
 
   private mapToReview(r: any) {
-    return new Review(r.content, r.rating, r.movieId, r.date)
+    //return new Review(r.content, r.rating, r.movieId, r.date)
+    return { content: r.content, rating: r.rating, movieId: r.movieId, date: r.date }
   }
 }

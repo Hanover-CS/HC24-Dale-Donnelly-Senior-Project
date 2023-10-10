@@ -22,7 +22,7 @@ export class MovieDetailsComponent {
 
   postReview(rating: string, content: string) {
     const numRating = Number(rating)
-    const review = new Review(content, numRating, this.movieId, "date")
+    const review: Review = {content: content, rating: numRating, movieId: this.movieId, date: "date"};
     console.log("Review Posted:")
     console.log(review);
   }
