@@ -33,6 +33,6 @@ export class MovieDetailsComponent {
           this.movie = movie
         })
     )
-    this.reviews = this.reviewService.getAllReviews();
+    this.reviews = this.reviewService.getReviewsForMovie(this.movieId);
   }
 }
