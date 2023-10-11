@@ -22,9 +22,17 @@ export class MovieDetailsComponent {
 
   postReview(rating: string, content: string) {
     const numRating = Number(rating)
-    const review: Review = {content: content, rating: numRating, movieId: this.movieId, date: "date"};
-    console.log("Review Posted:")
+    const date = new Date()
+    const formattedDate = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`
+    const review: Review = {
+      content: content, 
+      rating: numRating, 
+      movieId: this.movieId, 
+      date: formattedDate
+    };
+    console.log("Review To Be Posted:")
     console.log(review);
+    this.reviewService.addReview(review)
   }
 
   ngOnInit() {

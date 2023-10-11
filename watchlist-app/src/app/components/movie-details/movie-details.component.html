@@ -10,7 +10,6 @@
                 <span>Rating: {{r.rating}}, Posted On: {{r.date}}</span>
                 <p>{{r.content}}</p>
             </div>
-        <form>
             <h4>Leave a Review:</h4>
             <span>Select a Rating:
                 <select #rating>
@@ -23,7 +22,6 @@
             </span>
             <textarea id="reviewText" placeholder="Type your review here..." rows="5" cols="60" #content></textarea>
             <button (click)="postReview(rating.value, content.value)">Post Review</button>
-        </form>
     </div>
 </div>
 <ng-template #elseBlock>Looking for movie...</ng-template>
