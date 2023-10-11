@@ -6,11 +6,10 @@
     <div>{{movie.genreIds}}</div>
     <div id="reviewSection">
         <h3>Reviews</h3>
-        <ul id="reviewList">
-            <li *ngFor="let r of reviews | async">
-                <span>{{r.content}}</span>
-            </li>
-        </ul>
+            <div class="review" *ngFor="let r of reviews | async">
+                <span>Rating: {{r.rating}}, Posted On: {{r.date}}</span>
+                <p>{{r.content}}</p>
+            </div>
         <form>
             <h4>Leave a Review:</h4>
             <span>Select a Rating:
