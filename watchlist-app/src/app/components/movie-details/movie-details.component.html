@@ -6,9 +6,11 @@
     <div>{{movie.genreIds}}</div>
     <div id="reviewSection">
         <h3>Reviews</h3>
-            <div class="review" *ngFor="let r of reviews | async">
-                <span>Rating: {{r.rating}}, Posted On: {{r.date}}</span>
-                <p>{{r.content}}</p>
+            <div *ngIf="(reviews | async)?.length else noReviews">
+                <div class="review" *ngFor="let r of reviews | async">
+                    <span>Rating: {{r.rating}}, Posted On: {{r.date}}</span>
+                    <p>{{r.content}}</p>
+                </div>
             </div>
             <h4>Leave a Review:</h4>
             <span>Select a Rating:
@@ -25,3 +27,6 @@
     </div>
 </div>
 <ng-template #elseBlock>Looking for movie...</ng-template>
+<ng-template #noReviews>
+    <div id="noReviews">There are no reviews for this title</div>
+</ng-template>
