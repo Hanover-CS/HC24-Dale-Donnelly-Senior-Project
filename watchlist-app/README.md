@@ -1,5 +1,7 @@
 # WatchlistApp
 
+A live version of the app is hosted at: https://hanover-cs.github.io/HC24-Dale-Donnelly-Senior-Project/#/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
 ## Development server
