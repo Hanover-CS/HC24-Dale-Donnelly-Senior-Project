@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, query, addDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, query, addDoc, where } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Review } from 'src/lib/types/Review';
 
@@ -7,25 +7,25 @@ import { Review } from 'src/lib/types/Review';
   providedIn: 'root'
 })
 export class ReviewService {
-  reviews !: Observable<Review[]>
+  allReviews !: Observable<Review[]>
   reviewCollection = collection(this.firestore, 'reviews')
 
   constructor(private firestore: Firestore) {}
 
   getAllReviews() {
-    // const reviewCollection = collection(this.firestore, 'reviews');
     const q = query(this.reviewCollection)
-    this.reviews = collectionData(q).pipe(
+    this.allReviews = collectionData(q).pipe(
       map(reviews => reviews.map((r: any) => this.mapToReview(r)))
     )
-    return this.reviews;
+    return this.allReviews;
   }
 
   getReviewsForMovie(movieId: number) {
-    this.getAllReviews();
-    return this.reviews.pipe(
-      map(reviews => reviews.filter((r: Review) => r.movieId === movieId))
+    const q = query(this.reviewCollection, where('movieId', '==', movieId))
+    const movieReviews = collectionData(q).pipe(
+      map(reviews => reviews.map((r: any) => this.mapToReview(r)))
     )
+    return movieReviews
   }
 
   private mapToReview(r: any) {
