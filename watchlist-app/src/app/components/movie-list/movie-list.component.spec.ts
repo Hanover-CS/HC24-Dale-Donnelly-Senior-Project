@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieListComponent } from './movie-list.component';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 describe('MovieListComponent', () => {
   let component: MovieListComponent;
@@ -10,7 +10,7 @@ describe('MovieListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [MovieListComponent],
-      providers: [HttpClient, HttpHandler]
+      imports: [HttpClientTestingModule]
     });
     fixture = TestBed.createComponent(MovieListComponent);
     component = fixture.componentInstance;
