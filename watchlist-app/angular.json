@@ -23,8 +23,16 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/*", "input": "../docs", "output": "./docs"},
-              { "glob": "_config.yml", "input": "..", "output": "." }
+              {
+                "glob": "**/*",
+                "input": "../docs",
+                "output": "./docs"
+              },
+              {
+                "glob": "_config.yml",
+                "input": "..",
+                "output": "."
+              }
             ],
             "styles": [
               "src/styles.css"
@@ -93,8 +101,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
