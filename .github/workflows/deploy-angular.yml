@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: npm run test:headless
+    - run: npm run test
     - uses: actions/checkout@v3
     - name: All things angular
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
