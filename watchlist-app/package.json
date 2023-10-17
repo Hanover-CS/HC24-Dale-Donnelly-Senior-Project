@@ -8,7 +8,8 @@
     "build:prod": "ng build --output-path ../docs/dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage"
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "lint":"ng lint"
   },
   "private": true,
   "dependencies": {
