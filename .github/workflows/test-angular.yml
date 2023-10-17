@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: latest
     - name: Install dependencies
-      run: npm install
+      run: cd watchlist-app && npm install
     - name: lint
       run: npm run lint
     - name: Test
