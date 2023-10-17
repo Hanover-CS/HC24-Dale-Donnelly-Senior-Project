@@ -10,7 +10,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: npm run test:headless
+    - name: Use Node.js 18.7.1
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.7.1
+    - name: Install dependencies
+      run: npm install
+    - name: lint
+      run: npm run lint
+    - name: Test
+      run: npm run test:headless
     - name: All things angular
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
       with:
