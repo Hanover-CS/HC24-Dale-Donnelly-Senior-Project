@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: ng test
     - uses: actions/checkout@v3
     - name: All things angular
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
@@ -20,6 +19,7 @@ jobs:
         base_href: https://hanover-cs.github.io/HC24-Dale-Donnelly-Senior-Project/
         deploy_branch: gh-pages
         angular_dist_build_folder: watchlist-app/dist/watchlist-app
+    - run: npm run test:headless
 
 permissions:
   contents: write
