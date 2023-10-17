@@ -20,13 +20,16 @@ export class MovieService {
     if (this.movies !== undefined) {
       return this.movies;
     }
+    // eslint-disable-next-line
     const movieData = this.http.get<any>('assets/data/movies.json', { responseType: "json"})
     this.movies = movieData.pipe(
+      // eslint-disable-next-line
       map(movies => movies.results.map((m: any) => this.mapToMovie(m)))
     )
     return this.movies;
    }
 
+   // eslint-disable-next-line
    private mapToMovie(m: any): MovieData {
     const movie: MovieData = {
       id: m.id,

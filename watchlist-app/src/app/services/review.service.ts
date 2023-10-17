@@ -15,6 +15,7 @@ export class ReviewService {
   getAllReviews() {
     const q = query(this.reviewCollection)
     this.allReviews = collectionData(q).pipe(
+      // eslint-disable-next-line
       map(reviews => reviews.map((r: any) => this.mapToReview(r)))
     )
     return this.allReviews;
@@ -23,11 +24,13 @@ export class ReviewService {
   getReviewsForMovie(movieId: number) {
     const q = query(this.reviewCollection, where('movieId', '==', movieId))
     const movieReviews = collectionData(q).pipe(
+      // eslint-disable-next-line
       map(reviews => reviews.map((r: any) => this.mapToReview(r)))
     )
     return movieReviews
   }
 
+  // eslint-disable-next-line
   private mapToReview(r: any) {
     return { content: r.content, rating: r.rating, movieId: r.movieId, date: r.date }
   }

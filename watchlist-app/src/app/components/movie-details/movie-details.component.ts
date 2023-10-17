@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { Review } from 'src/lib/types/Review';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
-export class MovieDetailsComponent {
+export class MovieDetailsComponent implements OnInit {
   constructor(private movieService: MovieService, private reviewService: ReviewService) {}
 
   route: ActivatedRoute = inject(ActivatedRoute);
