@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
 import { MovieData } from 'src/lib/types/MovieData';
-import { ImageUrl } from 'src/lib/types/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +10,18 @@ import { ImageUrl } from 'src/lib/types/urls';
 export class MovieService {
   movies !: Observable<MovieData[]>;
   singleMovies = new Map();
-  url: string = 'assets/data/movies.json'
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getAllMovies();
+  }
 
   getAllMovies(): Observable<MovieData[]> {
     if (this.movies !== undefined) {
       return this.movies;
     }
     // eslint-disable-next-line
-    const movieData = this.http.get<any>(this.url, { responseType: "json"})
+    const movieData = this.http.get<any>('assets/data/movies.json', { responseType: "json"})
     this.movies = movieData.pipe(
       // eslint-disable-next-line
       map(movies => movies.results.map((m: any) => this.mapToMovie(m)))
@@ -35,7 +35,7 @@ export class MovieService {
       id: m.id,
       title: m.title,
       overview: m.overview,
-      imagePath:`${ImageUrl}${m.poster_path}`,
+      imagePath:`https://image.tmdb.org/t/p/w220_and_h330_face${m.poster_path}`,
       releaseDate: m.release_date,
       genreIds: m.genre_ids
     }
