@@ -3,7 +3,9 @@
     <div>{{movie.title}}</div>
     <div>{{movie.overview}}</div>
     <div>{{movie.releaseDate}}</div>
-    <div>{{movie.genreIds}}</div>
+    <div id="genres">
+        <span *ngFor="let g of movie.genreIds" class="genre">{{genres.get(g)}}</span>
+    </div>
     <div id="reviewSection">
         <h3>Reviews</h3>
             <div *ngIf="(reviews | async)?.length else noReviews">

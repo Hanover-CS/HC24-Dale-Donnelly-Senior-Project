@@ -1,4 +1,4 @@
-const Genres: Map<number, string> = new Map();
+export const Genres: Map<number, string> = new Map();
 Genres.set(28, 'Action')
 Genres.set(12, 'Adeventure')
 Genres.set(16, 'Animation')

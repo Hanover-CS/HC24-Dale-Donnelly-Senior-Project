@@ -16,3 +16,11 @@
 .review:last-of-type, #noReviews {
     border-bottom: 1px solid black;
 }
+
+span.genre::after {
+    content: ', ';
+}
+
+span.genre:last-of-type::after {
+    content: '';
+}
