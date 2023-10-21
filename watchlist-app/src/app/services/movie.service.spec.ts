@@ -6,6 +6,24 @@ import { ImageUrl, TestingUrl } from 'src/lib/types/urls';
 import { MovieData } from 'src/lib/types/MovieData';
 import { HttpClientModule } from '@angular/common/http';
 
+const testMovies = [
+  {
+    id: 0,
+    title: 'Title',
+    imagePath: ImageUrl + '/kdPMUMJzyYAc4roD52qavX0nLIC.jpg',
+    overview: 'Description',
+    releaseDate: '2023-10-19',
+    genreIds: [27, 53]
+  },
+  {
+    id: 1,
+    title: 'Title 1',
+    imagePath: ImageUrl + '/fiVW06jE7z9YnO4trhaMEdclSiC.jpg',
+    overview: 'Description 1',
+    releaseDate: '2023-10-19',
+    genreIds: [28, 80, 53]
+  }
+];
 describe('MovieService', () => {
   let service: MovieService;
 
@@ -27,24 +45,6 @@ describe('MovieService', () => {
   });
 
   it('should get all movies as movie data', (done) => {
-    const testMovies: MovieData[] = [
-      {
-        id: 0, 
-        title: 'Title', 
-        imagePath: ImageUrl+'/kdPMUMJzyYAc4roD52qavX0nLIC.jpg', 
-        overview: 'Description', 
-        releaseDate: '2023-10-19', 
-        genreIds: [27, 53]
-      },
-      {
-        id: 1,
-        title: 'Title 1',
-        imagePath: ImageUrl+'/fiVW06jE7z9YnO4trhaMEdclSiC.jpg',
-        overview: 'Description 1',
-        releaseDate: '2023-10-19',
-        genreIds: [28, 80, 53]
-      }
-    ]
     service.url = TestingUrl
     const m = service.getAllMovies()
     m.subscribe(results => {
@@ -52,4 +52,13 @@ describe('MovieService', () => {
       done()
     })
   });
+
+  it('should retrieve single movie by id', (done) => {
+    service.url = TestingUrl
+    const m = service.getMovieById(0)
+    m.subscribe(movie => {
+      expect(movie).toEqual(testMovies[0])
+      done()
+    })
+  })
 });
