@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { MovieService } from './movie.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ImageUrl, TestingUrl } from 'src/lib/types/urls';
-import { MovieData } from 'src/lib/types/MovieData';
 import { HttpClientModule } from '@angular/common/http';
 
 const testMovies = [

@@ -11,7 +11,7 @@ import { ImageUrl } from 'src/lib/types/urls';
 export class MovieService {
   movies !: Observable<MovieData[]>;
   singleMovies = new Map();
-  url: string = 'assets/data/movies.json'
+  url = 'assets/data/movies.json'
 
 
   constructor(private http: HttpClient) {}

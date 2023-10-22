@@ -7,12 +7,11 @@ import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MovieData } from 'src/lib/types/MovieData';
 import { MovieService } from 'src/app/services/movie.service';
-import { Genres } from 'src/lib/types/Genre';
 
 const testId = 0
 
 class MovieServiceStub {
-  getMovieById(id: number) {
+  getMovieById() {
     return of(movie)
   }
 }
@@ -81,7 +80,7 @@ describe('MovieDetailsComponent', () => {
     const overview = document.getElementById('overview')?.textContent
     const releaseDate = document.getElementById('releaseDate')?.textContent
     // TODO: Figure out how to test that the genre ids are displaying as genres
-    const genres = document.querySelectorAll('genre')
+    // const genres = document.querySelectorAll('genre')
     expect(img.src).withContext('img has correct image path').toEqual(`${movie.imagePath}`)
     expect(title).withContext('title matches').toEqual(movie.title)
     expect(overview).withContext('overview matches').toEqual(movie.overview)
