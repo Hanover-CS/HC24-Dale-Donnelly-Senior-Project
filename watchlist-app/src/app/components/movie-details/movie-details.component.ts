@@ -14,9 +14,8 @@ import { Genres } from 'src/lib/types/Genre';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
-  constructor(private movieService: MovieService, private reviewService: ReviewService) {}
+  constructor(private movieService: MovieService, private reviewService: ReviewService, private route: ActivatedRoute) {}
 
-  route: ActivatedRoute = inject(ActivatedRoute);
   movieId = Number(this.route.snapshot.params['id']);
   movie !: MovieData
   reviews !: Observable<Review[]>;

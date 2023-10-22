@@ -1,8 +1,8 @@
 <div *ngIf="movie; elseBlock">
-    <img src="{{movie.imagePath}}" alt="{{movie.title}} Poster">
-    <div>{{movie.title}}</div>
-    <div>{{movie.overview}}</div>
-    <div>{{movie.releaseDate}}</div>
+    <img src="{{movie.imagePath}}" alt="{{movie.title}} Poster" id="movieImg">
+    <div id="title">{{movie.title}}</div>
+    <div id="overview">{{movie.overview}}</div>
+    <div id="releaseDate">{{movie.releaseDate}}</div>
     <div id="genres">
         <span *ngFor="let g of movie.genreIds" class="genre">{{genres.get(g)}}</span>
     </div>
