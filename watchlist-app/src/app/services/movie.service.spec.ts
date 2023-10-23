@@ -30,6 +30,7 @@ describe('MovieService', () => {
       imports: [HttpClientModule]
     });
     service = TestBed.inject(MovieService);
+    service.url = TestingUrl
   });
 
   it('should be created', () => {
@@ -37,13 +38,11 @@ describe('MovieService', () => {
   });
 
   it('should initialize movies observable', () => {
-    service.url = TestingUrl
     const m = service.getAllMovies()
     expect(m).toBeTruthy();
   });
 
   it('should get all movies as movie data', (done) => {
-    service.url = TestingUrl
     const m = service.getAllMovies()
     m.subscribe(results => {
       expect(results).toEqual(testMovies)
@@ -52,7 +51,6 @@ describe('MovieService', () => {
   });
 
   it('should retrieve single movie by id', (done) => {
-    service.url = TestingUrl
     const m = service.getMovieById(0)
     m.subscribe(movie => {
       expect(movie).toEqual(testMovies[0])
