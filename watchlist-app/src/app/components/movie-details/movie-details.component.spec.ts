@@ -7,25 +7,9 @@ import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MovieData } from 'src/lib/types/MovieData';
 import { MovieService } from 'src/app/services/movie.service';
+import { Review } from 'src/lib/types/Review';
 
 const testId = 0
-
-class MovieServiceStub {
-  getMovieById() {
-    return of(movie)
-  }
-}
-
-class ReviewServiceStub {
-  getReviewsForMovie(id: number) {
-    return of({
-      content: 'Example',
-      rating: 5,
-      movieId: id,
-      date: '10/22/2023'
-    })
-  }
-}
 
 const movie: MovieData = {
   id: testId,
@@ -34,6 +18,27 @@ const movie: MovieData = {
   imagePath: 'http://example.com/',
   releaseDate: '2023-10-16',
   genreIds: [28]
+}
+
+class MovieServiceStub {
+  getMovieById() {
+    return of(movie)
+  }
+}
+
+const reviews: Review[] = [
+  {
+    content: 'Example',
+    rating: 5,
+    movieId: 0,
+    date: '10/22/2023'
+  }
+]
+
+class ReviewServiceStub {
+  getReviewsForMovie(id: number) {
+    return of(reviews)
+  }
 }
 
 describe('MovieDetailsComponent', () => {
@@ -72,6 +77,7 @@ describe('MovieDetailsComponent', () => {
 
   it('should get movie from MovieService', () => {
     expect(component.movie).toEqual(movie)
+    expect()
   })
 
   it('should display movie info', () => {
@@ -85,5 +91,11 @@ describe('MovieDetailsComponent', () => {
     expect(title).withContext('title matches').toEqual(movie.title)
     expect(overview).withContext('overview matches').toEqual(movie.overview)
     expect(releaseDate).withContext('releaseDate matches').toEqual(movie.releaseDate)
+  })
+
+  it('should get reviews from ReviewService', () => {
+    component.reviews.subscribe((r) => {
+      expect(r).toEqual(reviews)
+    })
   })
 });
