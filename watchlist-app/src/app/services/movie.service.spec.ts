@@ -37,13 +37,10 @@ describe('MovieService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should initialize movies observable', () => {
-    const m = service.getAllMovies()
-    expect(m).toBeTruthy();
-  });
 
   it('should get all movies as movie data', (done) => {
     const m = service.getAllMovies()
+    expect(m).toBeTruthy();
     m.subscribe(results => {
       expect(results).toEqual(testMovies)
       done()
