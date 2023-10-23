@@ -31,8 +31,6 @@ export class MovieDetailsComponent implements OnInit {
       movieId: this.movieId, 
       date: formattedDate
     };
-    console.log("Review To Be Posted:")
-    console.log(review);
     this.reviewService.addReview(review)
   }
 

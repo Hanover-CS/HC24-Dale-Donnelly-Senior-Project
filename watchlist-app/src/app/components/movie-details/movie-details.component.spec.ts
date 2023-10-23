@@ -36,8 +36,12 @@ const reviews: Review[] = [
 ]
 
 class ReviewServiceStub {
-  getReviewsForMovie(id: number) {
+  getReviewsForMovie() {
     return of(reviews)
+  }
+
+  addReview() {
+    return reviews
   }
 }
 
@@ -97,5 +101,12 @@ describe('MovieDetailsComponent', () => {
     component.reviews.subscribe((r) => {
       expect(r).toEqual(reviews)
     })
+  })
+
+  it('should call review service to post review', () => {
+    const service = TestBed.inject(ReviewService)
+    const spy = spyOn(service, 'addReview')
+    component.postReview('test', '1');
+    expect(spy).toHaveBeenCalled()
   })
 });
