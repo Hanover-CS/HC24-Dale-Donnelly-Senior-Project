@@ -19,4 +19,4 @@ jobs:
     - name: lint
       run: cd watchlist-app && npm run lint
     - name: Test
-      run: cd watchlist-app && npm run test:headless
+      run: cd watchlist-app && npm run test:emulator
