@@ -9,7 +9,7 @@
     "build:prod": "ng build --output-path ../docs/dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:emulator": "firebase emulators:exec --project=demo-project \"ng test\"",
+    "test:emulator": "firebase emulators:exec --only firestore --project=demo-project \"ng test\"",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint": "ng lint --force"
   },

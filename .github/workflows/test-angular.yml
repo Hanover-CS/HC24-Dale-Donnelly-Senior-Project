@@ -21,4 +21,4 @@ jobs:
     - name: lint
       run: cd watchlist-app && npm run lint
     - name: Test
-      run: cd watchlist-app && npm run test:emulator
+      run: cd watchlist-app && npm run test:emulator --exit
