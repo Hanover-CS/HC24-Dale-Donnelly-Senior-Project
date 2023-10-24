@@ -22,6 +22,9 @@ const testMovies = [
     genreIds: [28, 80, 53]
   }
 ];
+
+const testId = 0;
+
 describe('MovieService', () => {
   let service: MovieService;
 
@@ -39,19 +42,27 @@ describe('MovieService', () => {
 
 
   it('should get all movies as movie data', (done) => {
-    const m = service.getAllMovies()
-    expect(m).toBeTruthy();
-    m.subscribe(results => {
+    const movies = service.getAllMovies()
+    expect(movies).toBeTruthy();
+    movies.subscribe(results => {
       expect(results).toEqual(testMovies)
       done()
     })
   });
 
   it('should retrieve single movie by id', (done) => {
-    const m = service.getMovieById(0)
-    m.subscribe(movie => {
-      expect(movie).toEqual(testMovies[0])
+    const movie = service.getMovieById(testId)
+    movie.subscribe(m => {
+      expect(m).toEqual(testMovies[0])
       done()
     })
+  })
+
+  it('should retrieve single movie from map if previously retrieved', () => {
+    const mapSpy = spyOn(service.singleMovies, 'get')
+    service.getMovieById(testId) // initial retrieval
+    service.getMovieById(testId) // map retrieval (hopefully)
+    expect(mapSpy).toHaveBeenCalledTimes(1)
+    expect(mapSpy).toHaveBeenCalledWith(testId)
   })
 });
