@@ -1,16 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ReviewService } from './review.service';
+import { Firestore } from '@angular/fire/firestore';
 
-xdescribe('ReviewService', () => {
+describe('ReviewService', () => {
   let service: ReviewService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        Firestore
+      ]
+    });
     service = TestBed.inject(ReviewService);
   });
 
-  xit('should be created', () => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });
