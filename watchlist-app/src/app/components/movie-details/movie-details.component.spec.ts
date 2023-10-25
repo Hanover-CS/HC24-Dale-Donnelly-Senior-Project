@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieData } from 'src/lib/types/MovieData';
 import { MovieService } from 'src/app/services/movie.service';
 import { Review } from 'src/lib/types/Review';
-import { StarRatingComponent, StarRatingConfig, StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
+import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 
 const testId = 0
 
