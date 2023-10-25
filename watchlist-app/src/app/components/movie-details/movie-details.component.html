@@ -18,9 +18,9 @@
                 </div>
             </div>
             <h4>Leave a Review:</h4>
-            <star-rating labelText="Select a Rating" [rating]=1 [hoverEnabled]=true class="rating" #rating></star-rating>
+            <star-rating labelText="Select a Rating" [rating]=1 [hoverEnabled]=true class="rating" #stars></star-rating>
             <textarea id="reviewText" placeholder="Type your review here..." rows="5" cols="60" #content></textarea>
-            <button (click)="postReview(rating.rating, content.value)">Post Review</button>
+            <button (click)="postReview(stars.rating, content.value)">Post Review</button>
     </div>
 </div>
 <ng-template #elseBlock>Looking for movie...</ng-template>
