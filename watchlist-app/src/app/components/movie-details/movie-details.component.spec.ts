@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieData } from 'src/lib/types/MovieData';
 import { MovieService } from 'src/app/services/movie.service';
 import { Review } from 'src/lib/types/Review';
+import { StarRatingComponent, StarRatingConfig, StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 
 const testId = 0
 
@@ -51,9 +52,12 @@ describe('MovieDetailsComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [MovieDetailsComponent],
+      declarations: [
+        MovieDetailsComponent
+      ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        StarRatingModule
       ],
       providers: [
         { provide: MovieService, useClass: MovieServiceStub},
@@ -62,7 +66,8 @@ describe('MovieDetailsComponent', () => {
           snapshot: {
             params: {id: testId}
           }
-        }}
+        }},
+        StarRatingConfigService
       ]
     });
     TestBed.inject(ActivatedRoute)
@@ -106,7 +111,7 @@ describe('MovieDetailsComponent', () => {
   it('should call review service to post review', () => {
     const service = TestBed.inject(ReviewService)
     const spy = spyOn(service, 'addReview')
-    component.postReview('test', '1');
+    component.postReview(1, 'test');
     expect(spy).toHaveBeenCalled()
   })
 });
