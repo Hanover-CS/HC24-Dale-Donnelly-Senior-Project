@@ -24,3 +24,12 @@ span.genre::after {
 span.genre:last-of-type::after {
     content: '';
 }
+
+.rating {
+    display: inline-flex;
+    justify-content: flex-start;
+}
+
+.reviewContent {
+    margin: 4px
+}

@@ -10,8 +10,11 @@
         <h3>Reviews</h3>
             <div *ngIf="(reviews | async)?.length else noReviews">
                 <div class="review" *ngFor="let r of reviews | async">
-                    <span>Rating: {{r.rating}}, Posted On: {{r.date}}</span>
-                    <p>{{r.content}}</p>
+                    <div>
+                        <star-rating [rating]=r.rating [readOnly]=true class="rating"></star-rating>
+                        <span class="reviewDate">{{r.date}}</span>
+                    </div>
+                    <p class="reviewContent">{{r.content}}</p>
                 </div>
             </div>
             <h4>Leave a Review:</h4>
