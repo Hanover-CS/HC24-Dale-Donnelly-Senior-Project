@@ -21,13 +21,12 @@ export class MovieDetailsComponent implements OnInit {
   reviews !: Observable<Review[]>;
   genres = Genres
 
-  postReview(rating: string, content: string) {
-    const numRating = Number(rating)
+  postReview(rating: number, content: string) {
     const date = new Date()
     const formattedDate = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`
     const review: Review = {
       content: content, 
-      rating: numRating, 
+      rating: rating, 
       movieId: this.movieId, 
       date: formattedDate
     };
