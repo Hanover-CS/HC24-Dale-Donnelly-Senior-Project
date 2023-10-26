@@ -7,17 +7,8 @@ import { environment } from 'src/environments/environment';
 
 describe('ReviewService', () => {
   let service: ReviewService;
-  // let firestore: Firestore;
-  let spy: jasmine.SpyObj<Firestore>
 
-  beforeEach(() => {
-    spy = jasmine.createSpyObj(Firestore, [
-      'collectionData', 
-      'collection',
-      'query',
-      'addDoc',
-      'where'
-    ])
+  beforeAll(() => {
     TestBed.configureTestingModule({
       imports: [
         FirebaseAppModule,
@@ -35,13 +26,13 @@ describe('ReviewService', () => {
         })
       ],
       providers: [
-        { provide: Firestore, useValue: spy }
-      ]
-    });
-    service = TestBed.inject(ReviewService);
-  });
 
-  xit('should be created', () => {
+      ]
+    })
+    service = TestBed.inject(ReviewService);
+  })
+
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });
