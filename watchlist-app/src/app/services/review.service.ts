@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, query, addDoc, where } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, query, addDoc, deleteDoc, where, doc } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Review } from 'src/lib/types/Review';
 
@@ -12,7 +12,7 @@ export class ReviewService {
 
   constructor(private firestore: Firestore) {}
 
-  getAllReviews() {
+  getAllReviews(): Observable<Review[]> {
     const q = query(this.reviewCollection)
     this.allReviews = collectionData(q).pipe(
       // eslint-disable-next-line
@@ -21,7 +21,7 @@ export class ReviewService {
     return this.allReviews;
   }
 
-  getReviewsForMovie(movieId: number) {
+  getReviewsForMovie(movieId: number): Observable<Review[]> {
     const q = query(this.reviewCollection, where('movieId', '==', movieId))
     const movieReviews = collectionData(q).pipe(
       // eslint-disable-next-line

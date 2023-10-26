@@ -4,9 +4,26 @@ import { ReviewService } from './review.service';
 import { Firestore, FirestoreModule, connectFirestoreEmulator, getFirestore, initializeFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FirebaseAppModule, getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
+import { Review } from 'src/lib/types/Review';
+
+const testReview: Review = {
+  content: 'test',
+  rating: 3,
+  movieId: 0,
+  date: '10/26/2023'
+}
+
+const testReview_2: Review = {
+  content: 'test',
+  rating: 3,
+  movieId: 1,
+  date: '10/26/2023'
+}
 
 describe('ReviewService', () => {
+
   let service: ReviewService;
+  let testReviews: Review[] = [];
 
   beforeAll(() => {
     TestBed.configureTestingModule({
@@ -24,15 +41,39 @@ describe('ReviewService', () => {
           }
           return firestore
         })
-      ],
-      providers: [
-
       ]
     })
     service = TestBed.inject(ReviewService);
+    service.addReview(testReview)
+    service.addReview(testReview_2)
+    testReviews = [testReview, testReview_2]
   })
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  // using $ to denote observable variables
+  it('should add and retrieve all reviews', (done) => {
+    const $allReviews = service.getAllReviews()
+    $allReviews.subscribe(reviews => {
+      // The order the reviews are retrieved in is unreliable,
+      // reviews are sorted by id for ease of comparison
+      reviews.sort((a, b) => {
+        return a.movieId - b.movieId
+      })
+      for (let i = 0; i < reviews.length; i++) {
+        expect(reviews[i]).toEqual(testReviews[i])
+      }
+      done()
+    })
+  })
+
+  it('should add and retrieve reviews for single movie', (done) => {
+    const $movieReviews = service.getReviewsForMovie(0)
+    $movieReviews.subscribe(reviews => {
+      expect(reviews[0]).toEqual(testReview)
+      done()
+    })
+  })
 });
