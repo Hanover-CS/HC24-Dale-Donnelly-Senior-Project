@@ -114,4 +114,12 @@ describe('MovieDetailsComponent', () => {
     component.postReview(1, 'test');
     expect(spy).toHaveBeenCalled()
   })
+
+  it('should clear user input with postReview()', () => {
+    const reviewTextArea = document.getElementById('reviewTextInput') as HTMLTextAreaElement
+    component.postReview(1, 'test')
+    if (reviewTextArea) {
+      expect(reviewTextArea.value).toEqual("")
+    }
+  }) 
 });

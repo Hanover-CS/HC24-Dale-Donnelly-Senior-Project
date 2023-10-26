@@ -22,15 +22,29 @@ export class MovieDetailsComponent implements OnInit {
   genres = Genres
 
   postReview(rating: number, content: string) {
-    const date = new Date()
-    const formattedDate = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`
+    const formattedDate = this.createDate();
     const review: Review = {
       content: content, 
       rating: rating, 
       movieId: this.movieId, 
       date: formattedDate
     };
+    this.clearUserInput();
     this.reviewService.addReview(review)
+  }
+
+  private createDate() {
+    const date = new Date();
+    const formattedDate = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`;
+    return formattedDate;
+  }
+
+  private clearUserInput() {
+    const reviewTextArea = document.getElementById('reviewTextInput') as HTMLTextAreaElement;
+    if (reviewTextArea) {
+      console.log('clearing user input from text area')
+      reviewTextArea.value = "";
+    }
   }
 
   ngOnInit() {
