@@ -26,10 +26,13 @@ span.genre:last-of-type::after {
 }
 
 .rating {
-    display: inline-flex;
     justify-content: flex-start;
 }
 
 .reviewContent {
-    margin: 4px
+    margin-bottom: 16px;
+}
+
+span.reviewDate {
+    font-size: smaller;
 }
