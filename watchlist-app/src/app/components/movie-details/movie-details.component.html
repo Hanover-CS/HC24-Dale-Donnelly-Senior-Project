@@ -4,7 +4,7 @@
     <div id="overview">{{movie.overview}}</div>
     <div id="releaseDate">{{movie.releaseDate}}</div>
     <div id="genres">
-        <span *ngFor="let g of movie.genreIds" class="genre">{{genres.get(g)}}</span>
+        <span *ngFor="let g of movie.genreIds" class="genre">{{genreIdToGenre.get(g)}}</span>
     </div>
     <div id="reviewSection">
         <h3>Reviews</h3>

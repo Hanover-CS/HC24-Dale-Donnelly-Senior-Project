@@ -6,7 +6,7 @@ import { MovieService } from 'src/app/services/movie.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { MovieData } from 'src/lib/types/MovieData';
 import { Review } from 'src/lib/types/Review';
-import { Genres } from 'src/lib/types/Genre';
+import { GenreIdToGenre } from 'src/lib/types/Genre';
 
 @Component({
   selector: 'app-movie-details',
@@ -19,7 +19,7 @@ export class MovieDetailsComponent implements OnInit {
   movieId = Number(this.route.snapshot.params['id']);
   movie !: MovieData
   reviews !: Observable<Review[]>;
-  genres = Genres
+  genreIdToGenre = GenreIdToGenre
 
   postReview(rating: number, content: string) {
     const formattedDate = this.createDate();
