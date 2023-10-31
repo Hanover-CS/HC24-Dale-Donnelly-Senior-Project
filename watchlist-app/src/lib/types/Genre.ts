@@ -1,6 +1,6 @@
 export const GenreIdToGenre: Map<number, string> = new Map();
 GenreIdToGenre.set(28, 'Action')
-GenreIdToGenre.set(12, 'Adeventure')
+GenreIdToGenre.set(12, 'Adventure')
 GenreIdToGenre.set(16, 'Animation')
 GenreIdToGenre.set(35, 'Comedy')
 GenreIdToGenre.set(80, 'Crime')
@@ -18,3 +18,6 @@ GenreIdToGenre.set(10770, 'TV Movie')
 GenreIdToGenre.set(53, 'Thriller')
 GenreIdToGenre.set(10752, ' War')
 GenreIdToGenre.set(37, 'Western')
+
+export const GenreIds: number[] = 
+[ 28, 12, 16, 35, 80, 99, 18, 10751, 14, 36, 27, 10402, 9648, 10749, 878, 10770, 53, 10752, 37 ]

@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
-  { path: '', component: MovieListComponent, title: 'Watchlist Homepage'},
+  { path: '', component: HomepageComponent, title: 'Watchlist Homepage'},
   { path: 'movie-details/:id', component: MovieDetailsComponent}
 ]
 

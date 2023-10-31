@@ -11,13 +11,15 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
 import { StarRatingModule } from 'angular-star-rating';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

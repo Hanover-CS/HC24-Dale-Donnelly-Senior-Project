@@ -1,5 +1,6 @@
-<ul>
-    <li *ngFor="let m of movies | async">
+<ul *ngIf="movies && movies.length>1">
+    <p>{{genreIdToGenre.get(genreId)}}</p>
+    <li *ngFor="let m of movies">
         <app-movie [movie]="m"></app-movie>
     </li>
 </ul>
