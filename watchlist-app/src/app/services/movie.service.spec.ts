@@ -65,4 +65,12 @@ describe('MovieService', () => {
     expect(mapSpy).toHaveBeenCalledTimes(1)
     expect(mapSpy).toHaveBeenCalledWith(testId)
   })
+
+  it('should retrieve all movies for a specific genre id', (done) => {
+    const movies = service.getMoviesByGenre(53) // both test movies include 53
+    movies.subscribe(m => {
+      expect(m).toEqual(testMovies)
+      done()
+    })
+  })
 });

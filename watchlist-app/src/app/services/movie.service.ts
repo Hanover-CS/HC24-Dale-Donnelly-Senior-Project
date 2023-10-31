@@ -55,4 +55,14 @@ export class MovieService {
     this.singleMovies.set(id, movieMatch)
     return movieMatch
    }
+
+   getMoviesByGenre(genreId: number): Observable<MovieData[]> {
+    let genreMovies: Observable<MovieData[]>
+    genreMovies = this.getAllMovies().pipe(
+      map(results => {
+        return results.filter((m: MovieData) => m.genreIds.includes(genreId))
+      })
+    )
+    return genreMovies
+   }
 }
