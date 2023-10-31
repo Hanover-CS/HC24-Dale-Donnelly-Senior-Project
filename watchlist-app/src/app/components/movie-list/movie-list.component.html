@@ -1,4 +1,4 @@
-<ul *ngIf="movies && movies.length>1">
+<ul *ngIf="movies && movies.length>=1">
     <p>{{genreIdToGenre.get(genreId)}}</p>
     <li *ngFor="let m of movies">
         <app-movie [movie]="m"></app-movie>
