@@ -67,9 +67,10 @@ describe('MovieService', () => {
   })
 
   it('should retrieve all movies for a specific genre id', (done) => {
-    const movies = service.getMoviesByGenre(53) // both test movies include 53
+    const movies = service.getMoviesByGenre(27) // first test movie includes 27
     movies.subscribe(m => {
-      expect(m).toEqual(testMovies)
+      expect(m.length).toEqual(1)
+      expect(m[0]).toEqual(testMovies[0])
       done()
     })
   })
