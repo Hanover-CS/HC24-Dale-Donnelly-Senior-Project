@@ -10,13 +10,13 @@ To best facilitate discussion, users will ideally be able to:
 
 ### Demo-Day Functionality
 To demonstrate my progress on building this service, by demo-day I would like for users to be able to:
-- View by-genre, organized lists of programs on the homepage of the app
-- Search for progams by title or by genre and view matching programs
-- Select and view programs from both movies and TV with basic details available
-- Write and leave a persistent review for a program
-- Select a score and leave a persistent rating for a program
-- View an average rating calulated from user ratings.
-- "React" to revies (thumbs up/down) with visible metrics
+-  [x] View by-genre, organized lists of programs on the homepage of the app
+- [ ] Search for progams by title or by genre and view matching programs
+- [x] Select and view programs from both movies and TV with basic details available
+- [x] Write and leave a persistent review for a program
+- [x] Select a score and leave a persistent rating for a program
+- [ ] View an average rating calulated from user ratings.
+- [ ] "React" to revies (thumbs up/down) with visible metrics
 
 ## Competing Services
 ### [Letterboxd](https://letterboxd.com/welcome) [1]
