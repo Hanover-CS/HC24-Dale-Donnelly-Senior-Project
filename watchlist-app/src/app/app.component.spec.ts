@@ -9,7 +9,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [RouterTestingModule] // Include your component in the testing module
+      imports: [RouterTestingModule]
     });
 
     fixture = TestBed.createComponent(AppComponent);
