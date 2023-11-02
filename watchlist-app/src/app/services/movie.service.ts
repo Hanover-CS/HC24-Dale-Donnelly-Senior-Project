@@ -5,6 +5,10 @@ import { Observable, map } from 'rxjs';
 import { MovieData } from 'src/lib/types/MovieData';
 import { ImageUrl } from 'src/lib/types/urls';
 
+/**
+ * Testing compodoc
+ */
+
 @Injectable({
   providedIn: 'root'
 })

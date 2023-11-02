@@ -60,8 +60,8 @@ describe('MovieService', () => {
 
   it('should retrieve single movie from map if previously retrieved', () => {
     const mapSpy = spyOn(service.singleMovies, 'get')
-    service.getMovieById(testId) // initial retrieval
-    service.getMovieById(testId) // map retrieval (hopefully)
+    service.getMovieById(testId) // initial retrieval using firestore
+    service.getMovieById(testId) // cached map retrieval
     expect(mapSpy).toHaveBeenCalledTimes(1)
     expect(mapSpy).toHaveBeenCalledWith(testId)
   })

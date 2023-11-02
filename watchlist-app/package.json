@@ -11,7 +11,8 @@
     "test": "ng test",
     "test:emulator": "firebase emulators:exec --only firestore --project=demo-project \"ng test --watch=false --browsers=ChromeHeadless\"",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
-    "lint": "ng lint --force"
+    "lint": "ng lint --force",
+    "compodoc": "npx compodoc -p tsconfig.doc.json"
   },
   "private": true,
   "dependencies": {
