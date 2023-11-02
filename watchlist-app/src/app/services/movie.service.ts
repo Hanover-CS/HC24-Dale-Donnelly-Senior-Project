@@ -6,7 +6,7 @@ import { MovieData } from 'src/lib/types/MovieData';
 import { ImageUrl } from 'src/lib/types/urls';
 
 /**
- * Testing compodoc
+ * MovieService is responsible for handling component requests for movie data. It utilizes the TMDB API (currently some data is stored locally).
  */
 
 @Injectable({
@@ -20,6 +20,11 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Requests API for movie data, uses the mapToMovie() helper function to organize the retrieved data.
+   * If movie data was retrieved previously, the movies variable is returned immediately to reduce requests.
+   * @returns
+   */
   getAllMovies(): Observable<MovieData[]> {
     if (this.movies !== undefined) {
       return this.movies;
@@ -33,6 +38,11 @@ export class MovieService {
     return this.movies;
    }
 
+   /**
+    * Helper function that takes JSON movie data from the API and transforms it to be an object of the MovieData interface.
+    * @param m 
+    * @returns 
+    */
    // eslint-disable-next-line
    private mapToMovie(m: any): MovieData {
     const movie: MovieData = {
@@ -46,6 +56,13 @@ export class MovieService {
     return movie
    } 
 
+   /**
+    * Filters all retrieved movies to find a single movie with a matching ID.
+    * If the information was retrieved previously in the same session, singleMovies map is accessed
+    * and the value is returned from it.
+    * @param id 
+    * @returns 
+    */
    getMovieById(id: number): Observable<MovieData> {
     if (this.singleMovies.has(id)) {
       return this.singleMovies.get(id)
@@ -60,6 +77,11 @@ export class MovieService {
     return movieMatch
    }
 
+   /**
+    * Filters all retrieved movies to find those with a specific genre ID 
+    * @param genreId 
+    * @returns 
+    */
    getMoviesByGenre(genreId: number): Observable<MovieData[]> {
     const genreMovies: Observable<MovieData[]> = this.getAllMovies().pipe(
       map(results => {

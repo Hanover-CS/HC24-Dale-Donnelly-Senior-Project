@@ -72,7 +72,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Testing compodoc</p>
+                <p>MovieService is responsible for handling component requests for movie data. It utilizes the TMDB API (currently some data is stored locally).</p>
 
             </p>
 
@@ -210,19 +210,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/services/movie.service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/app/services/movie.service.ts:28</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Requests API for movie data, uses the mapToMovie() helper function to organize the retrieved data.
+If movie data was retrieved previously, the movies variable is returned immediately to reduce requests.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/MovieData.html" target="_self" >Observable&lt;MovieData[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -247,14 +253,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/services/movie.service.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/services/movie.service.ts:66</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Filters all retrieved movies to find a single movie with a matching ID.
+If the information was retrieved previously in the same session, singleMovies map is accessed
+and the value is returned from it.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -314,14 +324,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/app/services/movie.service.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/services/movie.service.ts:85</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Filters all retrieved movies to find those with a specific genre ID</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -383,14 +395,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/services/movie.service.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/services/movie.service.ts:47</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Helper function that takes JSON movie data from the API and transforms it to be an object of the MovieData interface.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -532,7 +546,7 @@ import { MovieData } from &#x27;src/lib/types/MovieData&#x27;;
 import { ImageUrl } from &#x27;src/lib/types/urls&#x27;;
 
 /**
- * Testing compodoc
+ * MovieService is responsible for handling component requests for movie data. It utilizes the TMDB API (currently some data is stored locally).
  */
 
 @Injectable({
@@ -546,6 +560,11 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Requests API for movie data, uses the mapToMovie() helper function to organize the retrieved data.
+   * If movie data was retrieved previously, the movies variable is returned immediately to reduce requests.
+   * @returns
+   */
   getAllMovies(): Observable&lt;MovieData[]&gt; {
     if (this.movies !&#x3D;&#x3D; undefined) {
       return this.movies;
@@ -559,6 +578,11 @@ export class MovieService {
     return this.movies;
    }
 
+   /**
+    * Helper function that takes JSON movie data from the API and transforms it to be an object of the MovieData interface.
+    * @param m 
+    * @returns 
+    */
    // eslint-disable-next-line
    private mapToMovie(m: any): MovieData {
     const movie: MovieData &#x3D; {
@@ -572,6 +596,13 @@ export class MovieService {
     return movie
    } 
 
+   /**
+    * Filters all retrieved movies to find a single movie with a matching ID.
+    * If the information was retrieved previously in the same session, singleMovies map is accessed
+    * and the value is returned from it.
+    * @param id 
+    * @returns 
+    */
    getMovieById(id: number): Observable&lt;MovieData&gt; {
     if (this.singleMovies.has(id)) {
       return this.singleMovies.get(id)
@@ -586,6 +617,11 @@ export class MovieService {
     return movieMatch
    }
 
+   /**
+    * Filters all retrieved movies to find those with a specific genre ID 
+    * @param genreId 
+    * @returns 
+    */
    getMoviesByGenre(genreId: number): Observable&lt;MovieData[]&gt; {
     const genreMovies: Observable&lt;MovieData[]&gt; &#x3D; this.getAllMovies().pipe(
       map(results &#x3D;&gt; {
