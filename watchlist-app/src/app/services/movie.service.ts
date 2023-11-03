@@ -18,12 +18,17 @@ export class MovieService {
   url = 'assets/data/movies.json'
 
 
+  /**
+   * Constructor that creates an injectable, shared instance of the service.
+   * Provides an HttpClient instance for data operations.
+   * @param http
+   */
   constructor(private http: HttpClient) {}
 
   /**
    * Requests API for movie data, uses the mapToMovie() helper function to organize the retrieved data.
    * If movie data was retrieved previously, the movies variable is returned immediately to reduce requests.
-   * @returns
+   * @returns Observable array of movies
    */
   getAllMovies(): Observable<MovieData[]> {
     if (this.movies !== undefined) {
@@ -41,7 +46,7 @@ export class MovieService {
    /**
     * Helper function that takes JSON movie data from the API and transforms it to be an object of the MovieData interface.
     * @param m 
-    * @returns 
+    * @returns MovieData interface instance
     */
    // eslint-disable-next-line
    private mapToMovie(m: any): MovieData {
@@ -61,7 +66,7 @@ export class MovieService {
     * If the information was retrieved previously in the same session, singleMovies map is accessed
     * and the value is returned from it.
     * @param id 
-    * @returns 
+    * @returns Observable MovieData object
     */
    getMovieById(id: number): Observable<MovieData> {
     if (this.singleMovies.has(id)) {
@@ -80,7 +85,7 @@ export class MovieService {
    /**
     * Filters all retrieved movies to find those with a specific genre ID 
     * @param genreId 
-    * @returns 
+    * @returns Observable array of movies
     */
    getMoviesByGenre(genreId: number): Observable<MovieData[]> {
     const genreMovies: Observable<MovieData[]> = this.getAllMovies().pipe(

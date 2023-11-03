@@ -153,6 +153,9 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor that creates an injectable, shared instance of the service.
+Provides an HttpClient instance for data operations.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -210,8 +213,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/services/movie.service.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/services/movie.service.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -227,7 +230,8 @@ If movie data was retrieved previously, the movies variable is returned immediat
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable array of movies</p>
+
                             </div>
                 </td>
             </tr>
@@ -253,8 +257,8 @@ If movie data was retrieved previously, the movies variable is returned immediat
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/services/movie.service.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/services/movie.service.ts:71</a></div>
                         </td>
                     </tr>
 
@@ -298,7 +302,8 @@ and the value is returned from it.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable MovieData object</p>
+
                             </div>
                 </td>
             </tr>
@@ -324,8 +329,8 @@ and the value is returned from it.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="85"
-                                    class="link-to-prism">src/app/services/movie.service.ts:85</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/services/movie.service.ts:90</a></div>
                         </td>
                     </tr>
 
@@ -367,7 +372,8 @@ and the value is returned from it.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable array of movies</p>
+
                             </div>
                 </td>
             </tr>
@@ -395,8 +401,8 @@ and the value is returned from it.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/services/movie.service.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/services/movie.service.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -438,7 +444,8 @@ and the value is returned from it.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>MovieData interface instance</p>
+
                             </div>
                 </td>
             </tr>
@@ -558,12 +565,17 @@ export class MovieService {
   url &#x3D; &#x27;assets/data/movies.json&#x27;
 
 
+  /**
+   * Constructor that creates an injectable, shared instance of the service.
+   * Provides an HttpClient instance for data operations.
+   * @param http
+   */
   constructor(private http: HttpClient) {}
 
   /**
    * Requests API for movie data, uses the mapToMovie() helper function to organize the retrieved data.
    * If movie data was retrieved previously, the movies variable is returned immediately to reduce requests.
-   * @returns
+   * @returns Observable array of movies
    */
   getAllMovies(): Observable&lt;MovieData[]&gt; {
     if (this.movies !&#x3D;&#x3D; undefined) {
@@ -581,7 +593,7 @@ export class MovieService {
    /**
     * Helper function that takes JSON movie data from the API and transforms it to be an object of the MovieData interface.
     * @param m 
-    * @returns 
+    * @returns MovieData interface instance
     */
    // eslint-disable-next-line
    private mapToMovie(m: any): MovieData {
@@ -601,7 +613,7 @@ export class MovieService {
     * If the information was retrieved previously in the same session, singleMovies map is accessed
     * and the value is returned from it.
     * @param id 
-    * @returns 
+    * @returns Observable MovieData object
     */
    getMovieById(id: number): Observable&lt;MovieData&gt; {
     if (this.singleMovies.has(id)) {
@@ -620,7 +632,7 @@ export class MovieService {
    /**
     * Filters all retrieved movies to find those with a specific genre ID 
     * @param genreId 
-    * @returns 
+    * @returns Observable array of movies
     */
    getMoviesByGenre(genreId: number): Observable&lt;MovieData[]&gt; {
     const genreMovies: Observable&lt;MovieData[]&gt; &#x3D; this.getAllMovies().pipe(
