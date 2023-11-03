@@ -73,6 +73,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Generates a movie component, generated from the provided MovieData parameter.
+Movie component consists of a poster and a title, which are presented in
+the homepage lists.</p>
+
+    </p>
 
 
 
@@ -170,7 +179,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/components/movie/movie.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/movie/movie.component.ts:14</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -187,7 +196,11 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { MovieData } from &#x27;src/lib/types/MovieData&#x27;;
-
+/**
+ * Generates a movie component, generated from the provided MovieData parameter.
+ * Movie component consists of a poster and a title, which are presented in
+ * the homepage lists.
+ */
 @Component({
   selector: &#x27;app-movie&#x27;,
   templateUrl: &#x27;./movie.component.html&#x27;,
