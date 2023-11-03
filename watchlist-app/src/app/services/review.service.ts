@@ -3,6 +3,9 @@ import { Firestore, collectionData, collection, query, addDoc, where } from '@an
 import { Observable, map } from 'rxjs';
 import { Review } from 'src/lib/types/Review';
 
+/**
+ * ReviewService is responsible for requesting and retrieving review data from the project's Firestore database.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +13,18 @@ export class ReviewService {
   allReviews !: Observable<Review[]>
   reviewCollection = collection(this.firestore, 'reviews')
 
+  /**
+   * Constructor for creating a shared, injectable instance of the service.
+   * Provides a shared firestore instance for database operations.
+   * @param firestore 
+   */
   constructor(private firestore: Firestore) {}
 
+  /**
+   * Queries the Firestore database for all reviews. 
+   * Utilizes the mapToReview() helper function to organize the data.
+   * @returns Observable array of reviews
+   */
   getAllReviews(): Observable<Review[]> {
     const q = query(this.reviewCollection)
     this.allReviews = collectionData(q).pipe(
@@ -21,6 +34,12 @@ export class ReviewService {
     return this.allReviews;
   }
 
+  /**
+   * Queries the Firestore databse for all reviews that contain a specfic movie ID.
+   * Utilizes the mapToReview() helpfer function to organize the data.
+   * @param movieId 
+   * @returns Observable array of reviews
+   */
   getReviewsForMovie(movieId: number): Observable<Review[]> {
     const q = query(this.reviewCollection, where('movieId', '==', movieId))
     const movieReviews = collectionData(q).pipe(
@@ -30,15 +49,23 @@ export class ReviewService {
     return movieReviews
   }
 
+  /**
+   * Helper function that transforms retrieved Firestore document data to be instances of the Review interface.
+   * @param r 
+   * @returns Review interface instance
+   */
   // eslint-disable-next-line
   private mapToReview(r: any) {
     return { content: r.content, rating: r.rating, movieId: r.movieId, date: r.date }
   }
 
+  /**
+   * Adds the parameter review to the Firestore database.
+   * @param review 
+   * @returns Doc reference for new review
+   */
   async addReview(review: Review) {
-    console.log(`Adding review from: ${review}`)
     const newReview = await addDoc(this.reviewCollection, review)
-    console.log(newReview)
     return newReview;
   }
 }
