@@ -73,6 +73,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Generates a MovieList components, generated from the provided list of MovieData.
+Calls on the Movie components to create individual thumbnails in the lists.</p>
+<p>Movie lists are presented on the homepage of the app, separated by genre.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -202,7 +211,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -258,7 +267,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:19</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -292,8 +301,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -333,7 +342,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -358,7 +367,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -384,7 +393,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/movie-list/movie-list.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -403,6 +412,12 @@ import { MovieData } from &#x27;src/lib/types/MovieData&#x27;;
 import { MovieService } from &#x27;src/app/services/movie.service&#x27;;
 import { GenreIdToGenre, GenreIds } from &#x27;src/lib/types/Genre&#x27;;
 
+/**
+ * Generates a MovieList components, generated from the provided list of MovieData.
+ * Calls on the Movie components to create individual thumbnails in the lists.
+ * 
+ * Movie lists are presented on the homepage of the app, separated by genre.
+ */
 @Component({
   selector: &#x27;app-movie-list&#x27;,
   templateUrl: &#x27;./movie-list.component.html&#x27;,

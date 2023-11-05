@@ -4,6 +4,12 @@ import { MovieData } from 'src/lib/types/MovieData';
 import { MovieService } from 'src/app/services/movie.service';
 import { GenreIdToGenre, GenreIds } from 'src/lib/types/Genre';
 
+/**
+ * Generates a MovieList components, generated from the provided list of MovieData.
+ * Calls on the Movie components to create individual thumbnails in the lists.
+ * 
+ * Movie lists are presented on the homepage of the app, separated by genre.
+ */
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
