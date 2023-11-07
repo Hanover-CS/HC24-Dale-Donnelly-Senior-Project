@@ -13,7 +13,7 @@ jobs:
     - name: Install dependencies
       run: cd watchlist-app && npm install
     - name: Generate Docs
-      run: npm run compodoc
+      run: cd watchlist-app && npm run compodoc
     - name: All things angular
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
       with:
