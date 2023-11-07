@@ -1,6 +1,8 @@
 <p>{{genreIdToGenre.get(genreId)}}</p>
-<ul *ngIf="movies && movies.length>=1">
+<ul *ngIf="movies && movies.length>=1 else noMovies">
     <li *ngFor="let m of movies">
         <app-movie [movie]="m"></app-movie>
     </li>
 </ul>
+
+<ng-template #noMovies></ng-template>
