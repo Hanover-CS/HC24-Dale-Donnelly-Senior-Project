@@ -1,3 +1,7 @@
+/**
+ * This file creates a dictionary for translating TMDB Genre IDs to the respective strings, and a list of all the Genre IDs as well.
+ */
+
 export const GenreIdToGenre: Map<number, string> = new Map();
 GenreIdToGenre.set(28, 'Action')
 GenreIdToGenre.set(12, 'Adventure')
