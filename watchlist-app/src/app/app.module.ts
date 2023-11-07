@@ -12,7 +12,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
 import { StarRatingModule } from 'angular-star-rating';
 import { HomepageComponent } from './components/homepage/homepage.component';
-
+/**
+ * AppModule describes how to construct the app for Angular.
+ * 
+ * Declarations: Declares components that belong to the app. Includes all components founds in the 'components' directory.
+ * 
+ * Imports: Lists all required Angular modules.
+ * 
+ * Bootstrap: Declares which component will act as the index page.
+ */
 @NgModule({
   declarations: [
     AppComponent,
