@@ -94,12 +94,13 @@ describe('MovieDetailsComponent', () => {
     const title = document.getElementById('title')?.textContent
     const overview = document.getElementById('overview')?.textContent
     const releaseDate = document.getElementById('releaseDate')?.textContent
-    // TODO: Figure out how to test that the genre ids are displaying as genres
-    // const genres = document.querySelectorAll('genre')
+    const $genreSpans = document.querySelectorAll('.genre')
     expect(img.src).withContext('img has correct image path').toEqual(`${movie.imagePath}`)
     expect(title).withContext('title matches').toEqual(movie.title)
     expect(overview).withContext('overview matches').toEqual(movie.overview)
     expect(releaseDate).withContext('releaseDate matches').toEqual(movie.releaseDate)
+    expect($genreSpans.length).toEqual(1)
+    expect($genreSpans[0].textContent).toEqual('Action')
   })
 
   it('should get reviews from ReviewService', () => {
