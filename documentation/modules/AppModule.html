@@ -355,6 +355,16 @@
             <code>src/app/app.module.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>AppModule describes how to construct the app for Angular.</p>
+<p>Declarations: Declares components that belong to the app. Includes all components founds in the &#39;components&#39; directory.</p>
+<p>Imports: Lists all required Angular modules.</p>
+<p>Bootstrap: Declares which component will act as the index page.</p>
+
+            </p>
 
         <div class="container-fluid module">
             <div class="row">
@@ -418,7 +428,15 @@ import { AppRoutingModule } from &#x27;./app-routing.module&#x27;;
 import { environment } from &#x27;src/environments/environment.prod&#x27;;
 import { StarRatingModule } from &#x27;angular-star-rating&#x27;;
 import { HomepageComponent } from &#x27;./components/homepage/homepage.component&#x27;;
-
+/**
+ * AppModule describes how to construct the app for Angular.
+ * 
+ * Declarations: Declares components that belong to the app. Includes all components founds in the &#x27;components&#x27; directory.
+ * 
+ * Imports: Lists all required Angular modules.
+ * 
+ * Bootstrap: Declares which component will act as the index page.
+ */
 @NgModule({
   declarations: [
     AppComponent,

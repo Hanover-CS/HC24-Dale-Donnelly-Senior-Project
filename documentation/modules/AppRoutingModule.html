@@ -368,6 +368,11 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { MovieDetailsComponent } from &#x27;./components/movie-details/movie-details.component&#x27;;
 import { HomepageComponent } from &#x27;./components/homepage/homepage.component&#x27;;
 
+/**
+ * Declares routes for accessing different pages on the app. Routes inludes a path that modifies the URL and the component
+ * to be displayed. Any URL parameters needed are included in the path.
+ */
+
 const routes: Routes &#x3D; [
   { path: &#x27;&#x27;, component: HomepageComponent, title: &#x27;Watchlist Homepage&#x27;},
   { path: &#x27;movie-details/:id&#x27;, component: MovieDetailsComponent}
