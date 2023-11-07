@@ -24,13 +24,13 @@
 <title>cluster_AppRoutingModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="78,-70 78,-268 418,-268 418,-70 78,-70"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_AppRoutingModule_exports</title>
-<polygon fill="none" stroke="black" points="205,-208 205,-260 323,-260 323,-208 205,-208"/>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_AppRoutingModule_imports</title>
 <polygon fill="none" stroke="black" points="86,-78 86,-130 410,-130 410,-78 86,-78"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_AppRoutingModule_exports</title>
+<polygon fill="none" stroke="black" points="205,-208 205,-260 323,-260 323,-208 205,-208"/>
 </g>
 <!-- CommonModule -->
 <g id="node1" class="node">
