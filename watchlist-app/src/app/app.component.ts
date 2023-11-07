@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * The default angular component. HTML includes a router outlet for displaying other components.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
