@@ -26,12 +26,17 @@
               {
                 "glob": "**/*",
                 "input": "../docs",
-                "output": "./docs"
+                "output": "./proposal"
               },
               {
                 "glob": "_config.yml",
                 "input": "..",
                 "output": "."
+              },
+              {
+                "glob": "**/*",
+                "input":"./documentation",
+                "output": "./documentation"
               }
             ],
             "styles": [
