@@ -5,7 +5,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 /**
- * Declares routes for accessing different pages on the app. Routes inludes a path that modifies the URL and the component
+ * Declares routes for accessing different pages on the app. Routes includes a path that modifies the URL and the component
  * to be displayed. Any URL parameters needed are included in the path.
  */
 
