@@ -142,6 +142,9 @@
                                 <li class="link">
                                     <a href="../interfaces/Review.html" >Review</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/ReviewAverage.html" >ReviewAverage</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -292,6 +295,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Review.html" >Review</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ReviewAverage.html" >ReviewAverage</a>
                                        </li>
                                </ul>
                            </li>
@@ -530,6 +536,7 @@ export class MovieDetailsComponent implements OnInit {
   movie !: MovieData
   reviews !: Observable&lt;Review[]&gt;;
   genreIdToGenre &#x3D; GenreIdToGenre
+  reviewStats &#x3D; this.reviewService.getReviewStats(this.movieId);
 
   /**
    * Constructs a Review interface object and calls Firestore to post the review to the database.

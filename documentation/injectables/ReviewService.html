@@ -142,6 +142,9 @@
                                 <li class="link">
                                     <a href="../interfaces/Review.html" >Review</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/ReviewAverage.html" >ReviewAverage</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -293,6 +296,9 @@
                                        <li class="link">
                                            <a href="../interfaces/Review.html" >Review</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ReviewAverage.html" >ReviewAverage</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -403,9 +409,9 @@
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Firestore, collectionData, collection, query, addDoc, where } from &#x27;@angular/fire/firestore&#x27;;
-import { Observable, map } from &#x27;rxjs&#x27;;
-import { Review } from &#x27;src/lib/types/Review&#x27;;
+import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from &#x27;@angular/fire/firestore&#x27;;
+import { Observable, map, from } from &#x27;rxjs&#x27;;
+import { Review, ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
 
 /**
  * ReviewService is responsible for requesting and retrieving review data from the project&#x27;s Firestore database.
@@ -416,6 +422,7 @@ import { Review } from &#x27;src/lib/types/Review&#x27;;
 export class ReviewService {
   allReviews !: Observable&lt;Review[]&gt;
   reviewCollection &#x3D; collection(this.firestore, &#x27;reviews&#x27;)
+  reviewAvgCollection &#x3D; collection(this.firestore, &#x27;reviewAverage&#x27;)
 
   /**
    * Constructor for creating a shared, injectable instance of the service.
@@ -471,6 +478,39 @@ export class ReviewService {
   async addReview(review: Review) {
     const newReview &#x3D; await addDoc(this.reviewCollection, review)
     return newReview;
+  }
+
+  async getReviewStats(movieId: number) {
+    let newDoc;
+    const docRef &#x3D; doc(this.firestore, &#x27;reviewAverage/&#x27;+movieId)
+    const reviewAverage &#x3D; await getDoc(docRef)
+    if (reviewAverage.data()) return reviewAverage
+    else {
+      console.log(&#x27;creating review avg doc&#x27;)
+      const data &#x3D; this.getRatingStats(movieId)
+      data.subscribe(d &#x3D;&gt; {
+        newDoc &#x3D; setDoc(docRef, d)
+      })
+    }
+    return newDoc
+  }
+
+  private getRatingStats(movieId: number) {
+      const reviews &#x3D; this.getReviewsForMovie(movieId)
+      const data: Observable&lt;ReviewAverage&gt; &#x3D; reviews.pipe(
+        map((reviewArr: Review[]) &#x3D;&gt; {
+          let ratingCount &#x3D; 0
+          let totalRating &#x3D; 0
+          let avgRating &#x3D; 0
+          for (let r of reviewArr) {
+            ratingCount +&#x3D; 1
+            totalRating +&#x3D; r.rating
+          }
+          if (totalRating &gt; 0 &amp;&amp; ratingCount &gt; 0) Math.round(avgRating &#x3D; totalRating / ratingCount)
+          return { totalRating, ratingCount, avgRating }
+        })
+      )
+      return data
   }
 }
 </code></pre>
