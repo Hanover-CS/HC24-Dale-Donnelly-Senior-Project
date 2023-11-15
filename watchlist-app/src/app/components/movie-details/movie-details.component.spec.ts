@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MovieData } from 'src/lib/types/MovieData';
 import { MovieService } from 'src/app/services/movie.service';
-import { Review } from 'src/lib/types/Review';
+import { Review, ReviewAverage } from 'src/lib/types/Review';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 
 const testId = 0
@@ -43,6 +43,15 @@ class ReviewServiceStub {
 
   addReview() {
     return reviews
+  }
+
+  getReviewStats() {
+    const stats: ReviewAverage =  {
+      ratingCount: 1,
+      totalRating: 1,
+      avgRating: 1
+    }
+    return stats
   }
 }
 
