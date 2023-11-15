@@ -5,5 +5,11 @@ export interface Review {
     content: string,
     rating: number,
     movieId: number,
-    date: string
+    date: string,
+}
+
+export interface ReviewAverage {
+    ratingCount: number,
+    totalRating: number,
+    avgRating: number
 }

@@ -27,6 +27,7 @@ export class MovieDetailsComponent implements OnInit {
   movie !: MovieData
   reviews !: Observable<Review[]>;
   genreIdToGenre = GenreIdToGenre
+  reviewStats = this.reviewService.getReviewStats(this.movieId);
 
   /**
    * Constructs a Review interface object and calls Firestore to post the review to the database.

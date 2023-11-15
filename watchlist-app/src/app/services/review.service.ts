@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, query, addDoc, where } from '@angular/fire/firestore';
-import { Observable, map } from 'rxjs';
-import { Review } from 'src/lib/types/Review';
+import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from '@angular/fire/firestore';
+import { Observable, map, from } from 'rxjs';
+import { Review, ReviewAverage } from 'src/lib/types/Review';
 
 /**
  * ReviewService is responsible for requesting and retrieving review data from the project's Firestore database.
@@ -12,6 +12,7 @@ import { Review } from 'src/lib/types/Review';
 export class ReviewService {
   allReviews !: Observable<Review[]>
   reviewCollection = collection(this.firestore, 'reviews')
+  reviewAvgCollection = collection(this.firestore, 'reviewAverage')
 
   /**
    * Constructor for creating a shared, injectable instance of the service.
@@ -67,5 +68,38 @@ export class ReviewService {
   async addReview(review: Review) {
     const newReview = await addDoc(this.reviewCollection, review)
     return newReview;
+  }
+
+  async getReviewStats(movieId: number) {
+    let newDoc;
+    const docRef = doc(this.firestore, 'reviewAverage/'+movieId)
+    const reviewAverage = await getDoc(docRef)
+    if (reviewAverage.data()) return reviewAverage
+    else {
+      console.log('creating review avg doc')
+      const data = this.getRatingStats(movieId)
+      data.subscribe(d => {
+        newDoc = setDoc(docRef, d)
+      })
+    }
+    return newDoc
+  }
+
+  private getRatingStats(movieId: number) {
+      const reviews = this.getReviewsForMovie(movieId)
+      const data: Observable<ReviewAverage> = reviews.pipe(
+        map((reviewArr: Review[]) => {
+          let ratingCount = 0
+          let totalRating = 0
+          let avgRating = 0
+          for (let r of reviewArr) {
+            ratingCount += 1
+            totalRating += r.rating
+          }
+          if (totalRating > 0 && ratingCount > 0) Math.round(avgRating = totalRating / ratingCount)
+          return { totalRating, ratingCount, avgRating }
+        })
+      )
+      return data
   }
 }
