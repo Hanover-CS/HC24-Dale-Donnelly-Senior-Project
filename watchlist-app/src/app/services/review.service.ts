@@ -66,26 +66,33 @@ export class ReviewService {
    * @returns Doc reference for new review
    */
   async addReview(review: Review) {
+    // TODO: update review avg doc
     const newReview = await addDoc(this.reviewCollection, review)
     return newReview;
   }
 
-  async getReviewStats(movieId: number) {
+  async getReviewStats(movieId: number): Promise<ReviewAverage> {
     let newDoc;
     const docRef = doc(this.firestore, 'reviewAverage/'+movieId)
     const reviewAverage = await getDoc(docRef)
-    if (reviewAverage.data()) return reviewAverage
+    if (reviewAverage.data()) {
+      console.log('Found existing doc.')
+       return this.mapToReviewAverage(reviewAverage.data())
+    }
     else {
-      console.log('creating review avg doc')
-      const data = this.getRatingStats(movieId)
-      data.subscribe(d => {
-        newDoc = setDoc(docRef, d)
+      console.log('Creating new doc...')
+      return new Promise((res, rej) => {
+        console.log('creating promise')
+          const data = this.getRatingStats(movieId)
+          data.subscribe(d => {
+            setDoc(docRef, d)
+          })
+        console.log('promise created')
       })
     }
-    return newDoc
   }
 
-  private getRatingStats(movieId: number) {
+  private getRatingStats(movieId: number): Observable<ReviewAverage> {
       const reviews = this.getReviewsForMovie(movieId)
       const data: Observable<ReviewAverage> = reviews.pipe(
         map((reviewArr: Review[]) => {
@@ -96,10 +103,21 @@ export class ReviewService {
             ratingCount += 1
             totalRating += r.rating
           }
-          if (totalRating > 0 && ratingCount > 0) Math.round(avgRating = totalRating / ratingCount)
+          if (totalRating > 0 && ratingCount > 0) {
+            avgRating = totalRating / ratingCount
+            avgRating = Math.round(avgRating * 10) / 10
+          }
           return { totalRating, ratingCount, avgRating }
         })
       )
       return data
+  }
+
+  private mapToReviewAverage(d: any): ReviewAverage {
+    return {
+      ratingCount: d.ratingCount,
+      totalRating: d.totalRating,
+      avgRating: d.avgRating
+    }
   }
 }

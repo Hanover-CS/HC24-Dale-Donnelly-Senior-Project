@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 import { MovieService } from 'src/app/services/movie.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { MovieData } from 'src/lib/types/MovieData';
-import { Review } from 'src/lib/types/Review';
+import { Review, ReviewAverage } from 'src/lib/types/Review';
 import { GenreIdToGenre } from 'src/lib/types/Genre';
 
 /**
@@ -27,7 +27,7 @@ export class MovieDetailsComponent implements OnInit {
   movie !: MovieData
   reviews !: Observable<Review[]>;
   genreIdToGenre = GenreIdToGenre
-  reviewStats = this.reviewService.getReviewStats(this.movieId);
+  reviewStats !: ReviewAverage
 
   /**
    * Constructs a Review interface object and calls Firestore to post the review to the database.
@@ -74,5 +74,10 @@ export class MovieDetailsComponent implements OnInit {
         })
     )
     this.reviews = this.reviewService.getReviewsForMovie(this.movieId);
+    from(this.reviewService.getReviewStats(this.movieId)).subscribe(
+      stats => {
+        this.reviewStats = stats
+      }
+    )
   }
 }

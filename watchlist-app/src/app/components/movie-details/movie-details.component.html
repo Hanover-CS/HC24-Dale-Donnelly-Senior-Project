@@ -1,4 +1,9 @@
-<div *ngIf="movie; elseBlock">
+<div *ngIf="movie; noMovie">
+    <div id="reviewStats" *ngIf="reviewStats; noReviewStats">
+        <span>{{reviewStats.ratingCount}}, </span>
+        <span>{{reviewStats.totalRating}}, </span>
+        <span>{{reviewStats.avgRating}}</span>
+    </div>
     <img src="{{movie.imagePath}}" alt="{{movie.title}} Poster" id="movieImg">
     <div id="title">{{movie.title}}</div>
     <div id="overview">{{movie.overview}}</div>
@@ -21,7 +26,8 @@
             <button (click)="postReview(stars.rating, content.value)">Post Review</button>
     </div>
 </div>
-<ng-template #elseBlock>Looking for movie...</ng-template>
+<ng-template #noMovie>Looking for movie...</ng-template>
 <ng-template #noReviews>
     <div id="noReviews">There are no reviews for this title</div>
 </ng-template>
+<ng-template #noReviewStats>Looking for review stats...</ng-template>
