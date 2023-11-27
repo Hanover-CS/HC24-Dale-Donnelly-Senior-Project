@@ -2,5 +2,6 @@
     <a [routerLink]="['movie-details/', movie.id]">
         <img id="movieImg" src="{{movie.imagePath}}" alt="{{movie.title}} Poster" />
         <span id="movieTitle">{{movie.title}}</span>
+        <star-rating [readOnly]="true" [rating]="this.reviewStats.avgRating"></star-rating>
     </a>
 </section>

@@ -83,7 +83,7 @@ export class ReviewService {
        return this.mapToReviewAverage(reviewAverage.data())
     }
     else {
-      return new Promise((res, rej) => {
+      return new Promise(() => {
           const data = this.getRatingStats(movieId)
           data.subscribe(d => {
             setDoc(docRef, d)
