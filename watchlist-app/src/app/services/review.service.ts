@@ -12,7 +12,6 @@ import { Review, ReviewAverage } from 'src/lib/types/Review';
 export class ReviewService {
   allReviews !: Observable<Review[]>
   reviewCollection = collection(this.firestore, 'reviews')
-  reviewAvgCollection = collection(this.firestore, 'reviewAverage')
 
   /**
    * Constructor for creating a shared, injectable instance of the service.
@@ -66,8 +65,13 @@ export class ReviewService {
    * @returns Doc reference for new review
    */
   async addReview(review: Review) {
-    // TODO: update review avg doc
     const newReview = await addDoc(this.reviewCollection, review)
+    const avgDocRef = doc(this.firestore, 'reviewAverage/'+review.movieId)
+    this.getRatingStats(review.movieId).subscribe(
+      stats => {
+        setDoc(avgDocRef, stats)
+      }
+    )
     return newReview;
   }
 
@@ -76,18 +80,14 @@ export class ReviewService {
     const docRef = doc(this.firestore, 'reviewAverage/'+movieId)
     const reviewAverage = await getDoc(docRef)
     if (reviewAverage.data()) {
-      console.log('Found existing doc.')
        return this.mapToReviewAverage(reviewAverage.data())
     }
     else {
-      console.log('Creating new doc...')
       return new Promise((res, rej) => {
-        console.log('creating promise')
           const data = this.getRatingStats(movieId)
           data.subscribe(d => {
             setDoc(docRef, d)
           })
-        console.log('promise created')
       })
     }
   }

@@ -37,13 +37,14 @@ export class MovieDetailsComponent implements OnInit {
   postReview(rating: number, content: string) {
     const formattedDate = this.createDate();
     const review: Review = {
-      content: content, 
-      rating: rating, 
+      content, 
+      rating, 
       movieId: this.movieId, 
       date: formattedDate
     };
     this.clearUserInput();
     this.reviewService.addReview(review)
+    this.getReviewStats()
   }
 
   /**
@@ -74,10 +75,14 @@ export class MovieDetailsComponent implements OnInit {
         })
     )
     this.reviews = this.reviewService.getReviewsForMovie(this.movieId);
+    this.getReviewStats();
+  }
+
+  private getReviewStats() {
     from(this.reviewService.getReviewStats(this.movieId)).subscribe(
       stats => {
-        this.reviewStats = stats
+        this.reviewStats = stats;
       }
-    )
+    );
   }
 }

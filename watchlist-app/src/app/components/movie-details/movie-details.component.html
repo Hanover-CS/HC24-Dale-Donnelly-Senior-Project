@@ -1,8 +1,6 @@
 <div *ngIf="movie; noMovie">
     <div id="reviewStats" *ngIf="reviewStats; noReviewStats">
-        <span>{{reviewStats.ratingCount}}, </span>
-        <span>{{reviewStats.totalRating}}, </span>
-        <span>{{reviewStats.avgRating}}</span>
+        <star-rating class="rating postedRating" [rating]=reviewStats.avgRating></star-rating>
     </div>
     <img src="{{movie.imagePath}}" alt="{{movie.title}} Poster" id="movieImg">
     <div id="title">{{movie.title}}</div>
