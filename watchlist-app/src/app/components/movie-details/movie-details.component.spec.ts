@@ -10,23 +10,7 @@ import { MovieService } from 'src/app/services/movie.service';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 import { ReviewServiceStub, testReviews } from 'src/lib/stubs/ReviewServiceStub';
-
-const testId = 0
-
-const movie: MovieData = {
-  id: testId,
-  title: 'title',
-  overview: 'desc',
-  imagePath: 'http://example.com/',
-  releaseDate: '2023-10-16',
-  genreIds: [28]
-}
-
-class MovieServiceStub {
-  getMovieById() {
-    return of(movie)
-  }
-}
+import { MovieServiceStub, testMovie, testId } from 'src/lib/stubs/MovieServiceStub';
 
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
@@ -67,7 +51,7 @@ describe('MovieDetailsComponent', () => {
   })
 
   it('should get movie from MovieService', () => {
-    expect(component.movie).toEqual(movie)
+    expect(component.movie).toEqual(testMovie)
     expect()
   })
 
@@ -77,10 +61,10 @@ describe('MovieDetailsComponent', () => {
     const overview = document.getElementById('overview')?.textContent
     const releaseDate = document.getElementById('releaseDate')?.textContent
     const $genreSpans = document.querySelectorAll('.genre')
-    expect(img.src).withContext('img has correct image path').toEqual(`${movie.imagePath}`)
-    expect(title).withContext('title matches').toEqual(movie.title)
-    expect(overview).withContext('overview matches').toEqual(movie.overview)
-    expect(releaseDate).withContext('releaseDate matches').toEqual(movie.releaseDate)
+    expect(img.src).withContext('img has correct image path').toEqual(`${testMovie.imagePath}`)
+    expect(title).withContext('title matches').toEqual(testMovie.title)
+    expect(overview).withContext('overview matches').toEqual(testMovie.overview)
+    expect(releaseDate).withContext('releaseDate matches').toEqual(testMovie.releaseDate)
     expect($genreSpans.length).toEqual(1)
     expect($genreSpans[0].textContent).toEqual('Action')
   })
