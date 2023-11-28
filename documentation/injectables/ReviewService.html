@@ -100,6 +100,25 @@
                     </li>
             
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/MovieServiceStub.html" >MovieServiceStub</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ReviewServiceStub.html" >ReviewServiceStub</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
@@ -254,6 +273,25 @@
                            </li>
                    
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/MovieServiceStub.html" >MovieServiceStub</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ReviewServiceStub.html" >ReviewServiceStub</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
@@ -422,7 +460,6 @@ import { Review, ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
 export class ReviewService {
   allReviews !: Observable&lt;Review[]&gt;
   reviewCollection &#x3D; collection(this.firestore, &#x27;reviews&#x27;)
-  reviewAvgCollection &#x3D; collection(this.firestore, &#x27;reviewAverage&#x27;)
 
   /**
    * Constructor for creating a shared, injectable instance of the service.
@@ -477,25 +514,33 @@ export class ReviewService {
    */
   async addReview(review: Review) {
     const newReview &#x3D; await addDoc(this.reviewCollection, review)
+    const avgDocRef &#x3D; doc(this.firestore, &#x27;reviewAverage/&#x27;+review.movieId)
+    this.getRatingStats(review.movieId).subscribe(
+      stats &#x3D;&gt; {
+        setDoc(avgDocRef, stats)
+      }
+    )
     return newReview;
   }
 
-  async getReviewStats(movieId: number) {
+  async getReviewStats(movieId: number): Promise&lt;ReviewAverage&gt; {
     let newDoc;
     const docRef &#x3D; doc(this.firestore, &#x27;reviewAverage/&#x27;+movieId)
     const reviewAverage &#x3D; await getDoc(docRef)
-    if (reviewAverage.data()) return reviewAverage
+    if (reviewAverage.data()) {
+       return this.mapToReviewAverage(reviewAverage.data())
+    }
     else {
-      console.log(&#x27;creating review avg doc&#x27;)
-      const data &#x3D; this.getRatingStats(movieId)
-      data.subscribe(d &#x3D;&gt; {
-        newDoc &#x3D; setDoc(docRef, d)
+      return new Promise(() &#x3D;&gt; {
+          const data &#x3D; this.getRatingStats(movieId)
+          data.subscribe(d &#x3D;&gt; {
+            setDoc(docRef, d)
+          })
       })
     }
-    return newDoc
   }
 
-  private getRatingStats(movieId: number) {
+  private getRatingStats(movieId: number): Observable&lt;ReviewAverage&gt; {
       const reviews &#x3D; this.getReviewsForMovie(movieId)
       const data: Observable&lt;ReviewAverage&gt; &#x3D; reviews.pipe(
         map((reviewArr: Review[]) &#x3D;&gt; {
@@ -506,11 +551,22 @@ export class ReviewService {
             ratingCount +&#x3D; 1
             totalRating +&#x3D; r.rating
           }
-          if (totalRating &gt; 0 &amp;&amp; ratingCount &gt; 0) Math.round(avgRating &#x3D; totalRating / ratingCount)
+          if (totalRating &gt; 0 &amp;&amp; ratingCount &gt; 0) {
+            avgRating &#x3D; totalRating / ratingCount
+            avgRating &#x3D; Math.round(avgRating * 10) / 10
+          }
           return { totalRating, ratingCount, avgRating }
         })
       )
       return data
+  }
+
+  private mapToReviewAverage(d: any): ReviewAverage {
+    return {
+      ratingCount: d.ratingCount,
+      totalRating: d.totalRating,
+      avgRating: d.avgRating
+    }
   }
 }
 </code></pre>

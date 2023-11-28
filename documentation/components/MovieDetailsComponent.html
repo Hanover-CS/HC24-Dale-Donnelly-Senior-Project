@@ -100,6 +100,25 @@
                     </li>
             
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/MovieServiceStub.html" >MovieServiceStub</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ReviewServiceStub.html" >ReviewServiceStub</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
@@ -254,6 +273,25 @@
                            </li>
                    
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/MovieServiceStub.html" >MovieServiceStub</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ReviewServiceStub.html" >ReviewServiceStub</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
@@ -509,12 +547,12 @@
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
+import { Observable, from } from &#x27;rxjs&#x27;;
 
 import { MovieService } from &#x27;src/app/services/movie.service&#x27;;
 import { ReviewService } from &#x27;src/app/services/review.service&#x27;;
 import { MovieData } from &#x27;src/lib/types/MovieData&#x27;;
-import { Review } from &#x27;src/lib/types/Review&#x27;;
+import { Review, ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
 import { GenreIdToGenre } from &#x27;src/lib/types/Genre&#x27;;
 
 /**
@@ -536,7 +574,7 @@ export class MovieDetailsComponent implements OnInit {
   movie !: MovieData
   reviews !: Observable&lt;Review[]&gt;;
   genreIdToGenre &#x3D; GenreIdToGenre
-  reviewStats &#x3D; this.reviewService.getReviewStats(this.movieId);
+  reviewStats !: ReviewAverage
 
   /**
    * Constructs a Review interface object and calls Firestore to post the review to the database.
@@ -546,13 +584,14 @@ export class MovieDetailsComponent implements OnInit {
   postReview(rating: number, content: string) {
     const formattedDate &#x3D; this.createDate();
     const review: Review &#x3D; {
-      content: content, 
-      rating: rating, 
+      content, 
+      rating, 
       movieId: this.movieId, 
       date: formattedDate
     };
     this.clearUserInput();
     this.reviewService.addReview(review)
+    this.getReviewStats()
   }
 
   /**
@@ -583,6 +622,15 @@ export class MovieDetailsComponent implements OnInit {
         })
     )
     this.reviews &#x3D; this.reviewService.getReviewsForMovie(this.movieId);
+    this.getReviewStats();
+  }
+
+  private getReviewStats() {
+    from(this.reviewService.getReviewStats(this.movieId)).subscribe(
+      stats &#x3D;&gt; {
+        this.reviewStats &#x3D; stats;
+      }
+    );
   }
 }
 </code></pre>
