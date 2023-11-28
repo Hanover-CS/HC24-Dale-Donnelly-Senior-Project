@@ -9,6 +9,7 @@ import { MovieData } from 'src/lib/types/MovieData';
 import { MovieService } from 'src/app/services/movie.service';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
+import { ReviewServiceStub, testReviews } from 'src/lib/stubs/ReviewServiceStub';
 
 const testId = 0
 
@@ -21,41 +22,9 @@ const movie: MovieData = {
   genreIds: [28]
 }
 
-const stats: ReviewAverage = {
-  ratingCount: 1,
-  totalRating: 1,
-  avgRating: 1
-}
-
 class MovieServiceStub {
   getMovieById() {
     return of(movie)
-  }
-}
-
-const reviews: Review[] = [
-  {
-    content: 'Example',
-    rating: 5,
-    movieId: 0,
-    date: '10/22/2023'
-  }
-]
-
-class ReviewServiceStub {
-  constructor() {
-    console.log('stub made for movie details')
-  }
-  getReviewsForMovie() {
-    return of(reviews)
-  }
-
-  addReview() {
-    return reviews
-  }
-
-  getReviewStats() {
-    return new Promise((res, rej) => res(stats))
   }
 }
 
@@ -118,7 +87,7 @@ describe('MovieDetailsComponent', () => {
 
   it('should get reviews from ReviewService', () => {
     component.reviews.subscribe((r) => {
-      expect(r).toEqual(reviews)
+      expect(r).toEqual(testReviews)
     })
   })
 

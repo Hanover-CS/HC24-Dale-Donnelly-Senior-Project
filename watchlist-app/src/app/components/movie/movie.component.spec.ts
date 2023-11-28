@@ -7,38 +7,12 @@ import { of } from 'rxjs';
 import { ReviewService } from 'src/app/services/review.service';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
-
-const reviews: Review[] = [
-  {
-    content: 'Example',
-    rating: 5,
-    movieId: 0,
-    date: '10/22/2023'
-  }
-]
+import { ReviewServiceStub } from 'src/lib/stubs/ReviewServiceStub';
 
 const stats: ReviewAverage = {
     ratingCount: 1,
     totalRating: 1,
     avgRating: 1
-}
-
-class ReviewServiceStub {
-  constructor() {
-    console.log('stub made')
-  }
-
-  getReviewsForMovie() {
-    return of(reviews)
-  }
-
-  addReview() {
-    return reviews
-  }
-
-  async getReviewStats() {
-    return stats
-  }
 }
 
 describe('MovieComponent', () => {
