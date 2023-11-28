@@ -21,6 +21,12 @@ const movie: MovieData = {
   genreIds: [28]
 }
 
+const stats: ReviewAverage = {
+  ratingCount: 1,
+  totalRating: 1,
+  avgRating: 1
+}
+
 class MovieServiceStub {
   getMovieById() {
     return of(movie)
@@ -37,6 +43,9 @@ const reviews: Review[] = [
 ]
 
 class ReviewServiceStub {
+  constructor() {
+    console.log('stub made for movie details')
+  }
   getReviewsForMovie() {
     return of(reviews)
   }
@@ -46,12 +55,7 @@ class ReviewServiceStub {
   }
 
   getReviewStats() {
-    const stats: ReviewAverage =  {
-      ratingCount: 1,
-      totalRating: 1,
-      avgRating: 1
-    }
-    return stats
+    return new Promise((res, rej) => res(stats))
   }
 }
 

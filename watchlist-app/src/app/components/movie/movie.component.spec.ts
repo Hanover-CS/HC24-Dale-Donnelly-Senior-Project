@@ -3,6 +3,43 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MovieComponent } from './movie.component';
 import { MovieData } from 'src/lib/types/MovieData';
 import { RouterTestingModule } from '@angular/router/testing'
+import { of } from 'rxjs';
+import { ReviewService } from 'src/app/services/review.service';
+import { Review, ReviewAverage } from 'src/lib/types/Review';
+import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
+
+const reviews: Review[] = [
+  {
+    content: 'Example',
+    rating: 5,
+    movieId: 0,
+    date: '10/22/2023'
+  }
+]
+
+const stats: ReviewAverage = {
+    ratingCount: 1,
+    totalRating: 1,
+    avgRating: 1
+}
+
+class ReviewServiceStub {
+  constructor() {
+    console.log('stub made')
+  }
+
+  getReviewsForMovie() {
+    return of(reviews)
+  }
+
+  addReview() {
+    return reviews
+  }
+
+  async getReviewStats() {
+    return stats
+  }
+}
 
 describe('MovieComponent', () => {
   let component: MovieComponent;
@@ -20,12 +57,14 @@ describe('MovieComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [MovieComponent],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule, StarRatingModule],
+      providers: [ { provide: ReviewService, useClass: ReviewServiceStub }, StarRatingConfigService]
     });
 
     fixture = TestBed.createComponent(MovieComponent);
     component = fixture.componentInstance;
     component.movie = movie;
+    component.reviewStats = stats
     fixture.detectChanges();
   });
 
