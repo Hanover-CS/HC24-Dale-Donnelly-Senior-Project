@@ -515,7 +515,7 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
 import { ReviewService } from &#x27;src/app/services/review.service&#x27;;
 import { MovieData } from &#x27;src/lib/types/MovieData&#x27;;
 import { ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
@@ -529,7 +529,7 @@ import { ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
   templateUrl: &#x27;./movie.component.html&#x27;,
   styleUrls: [&#x27;./movie.component.css&#x27;]
 })
-export class MovieComponent {
+export class MovieComponent implements OnInit {
   @Input() movie !: MovieData;
   reviewStats !: ReviewAverage
 

@@ -448,7 +448,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from &#x27;@angular/fire/firestore&#x27;;
-import { Observable, map, from } from &#x27;rxjs&#x27;;
+import { Observable, map } from &#x27;rxjs&#x27;;
 import { Review, ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
 
 /**
@@ -524,7 +524,6 @@ export class ReviewService {
   }
 
   async getReviewStats(movieId: number): Promise&lt;ReviewAverage&gt; {
-    let newDoc;
     const docRef &#x3D; doc(this.firestore, &#x27;reviewAverage/&#x27;+movieId)
     const reviewAverage &#x3D; await getDoc(docRef)
     if (reviewAverage.data()) {
@@ -547,7 +546,7 @@ export class ReviewService {
           let ratingCount &#x3D; 0
           let totalRating &#x3D; 0
           let avgRating &#x3D; 0
-          for (let r of reviewArr) {
+          for (const r of reviewArr) {
             ratingCount +&#x3D; 1
             totalRating +&#x3D; r.rating
           }
@@ -561,6 +560,7 @@ export class ReviewService {
       return data
   }
 
+  // eslint-disable-next-line
   private mapToReviewAverage(d: any): ReviewAverage {
     return {
       ratingCount: d.ratingCount,
