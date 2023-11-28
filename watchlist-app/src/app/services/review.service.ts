@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from '@angular/fire/firestore';
-import { Observable, map, from } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
 
 /**
@@ -76,7 +76,6 @@ export class ReviewService {
   }
 
   async getReviewStats(movieId: number): Promise<ReviewAverage> {
-    let newDoc;
     const docRef = doc(this.firestore, 'reviewAverage/'+movieId)
     const reviewAverage = await getDoc(docRef)
     if (reviewAverage.data()) {
@@ -99,7 +98,7 @@ export class ReviewService {
           let ratingCount = 0
           let totalRating = 0
           let avgRating = 0
-          for (let r of reviewArr) {
+          for (const r of reviewArr) {
             ratingCount += 1
             totalRating += r.rating
           }
@@ -113,6 +112,7 @@ export class ReviewService {
       return data
   }
 
+  // eslint-disable-next-line
   private mapToReviewAverage(d: any): ReviewAverage {
     return {
       ratingCount: d.ratingCount,

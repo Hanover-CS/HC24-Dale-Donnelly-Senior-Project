@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ReviewService } from 'src/app/services/review.service';
 import { MovieData } from 'src/lib/types/MovieData';
 import { ReviewAverage } from 'src/lib/types/Review';
@@ -12,7 +12,7 @@ import { ReviewAverage } from 'src/lib/types/Review';
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css']
 })
-export class MovieComponent {
+export class MovieComponent implements OnInit {
   @Input() movie !: MovieData;
   reviewStats !: ReviewAverage
 

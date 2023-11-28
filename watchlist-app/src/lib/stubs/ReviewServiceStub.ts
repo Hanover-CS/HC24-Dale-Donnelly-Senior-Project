@@ -29,6 +29,6 @@ export class ReviewServiceStub {
   }
 
   getReviewStats() {
-    return new Promise((res, rej) => res(stats))
+    return new Promise((res) => res(stats))
   }
 }
