@@ -1,34 +1,36 @@
 <app-header-bar></app-header-bar>
-<div *ngIf="movie; noMovie">
-    <div id="reviewStats" *ngIf="reviewStats; noReviewStats">
-        <star-rating class="rating postedRating" [rating]=reviewStats.avgRating></star-rating>
-    </div>
-    <img src="{{movie.imagePath}}" alt="{{movie.title}} Poster" id="movieImg">
-    <div id="title">{{movie.title}}</div>
-    <div id="overview">{{movie.overview}}</div>
-    <div id="releaseDate">{{movie.releaseDate}}</div>
-    <div id="genres">
-        <span *ngFor="let g of movie.genreIds" class="genre">{{genreIdToGenre.get(g)}}</span>
-    </div>
-    <div id="reviewSection">
-        <h3>Reviews</h3>
-            <div *ngIf="(reviews | async)?.length else noReviews">
-                <div class="review" *ngFor="let r of reviews | async">
-                    <star-rating [rating]=r.rating [readOnly]=true class="rating postedRating"></star-rating>
-                    <p class="reviewContent">{{r.content}}</p>
-                    <span class="reviewDate">Posted On: {{r.date}}</span>
+<section>
+    <div *ngIf="movie; noMovie">
+        <div id="reviewStats" *ngIf="reviewStats; noReviewStats">
+            <star-rating class="rating postedRating" [rating]=reviewStats.avgRating></star-rating>
+        </div>
+        <img src="{{movie.imagePath}}" alt="{{movie.title}} Poster" id="movieImg">
+        <div id="title">{{movie.title}}</div>
+        <div id="overview">{{movie.overview}}</div>
+        <div id="releaseDate">{{movie.releaseDate}}</div>
+        <div id="genres">
+            <span *ngFor="let g of movie.genreIds" class="genre">{{genreIdToGenre.get(g)}}</span>
+        </div>
+        <div id="reviewSection">
+            <h3>Reviews</h3>
+                <div *ngIf="(reviews | async)?.length else noReviews">
+                    <div class="review" *ngFor="let r of reviews | async">
+                        <star-rating [rating]=r.rating [readOnly]=true class="rating postedRating"></star-rating>
+                        <p class="reviewContent">{{r.content}}</p>
+                        <span class="reviewDate">Posted On: {{r.date}}</span>
+                    </div>
                 </div>
-            </div>
-            <h4>Leave a Review:</h4>
-            <star-rating labelText="Select a Rating" [rating]=1 [hoverEnabled]=true class="rating" #stars></star-rating>
-            <textarea id="reviewTextInput" placeholder="Type your review here..." rows="5" cols="60" #content></textarea>
-            <button (click)="postReview(stars.rating, content.value)">Post Review</button>
+                <h4>Leave a Review:</h4>
+                <star-rating labelText="Select a Rating" [rating]=1 [hoverEnabled]=true class="rating" #stars></star-rating>
+                <textarea id="reviewTextInput" placeholder="Type your review here..." rows="5" cols="60" #content></textarea>
+                <button (click)="postReview(stars.rating, content.value)">Post Review</button>
+        </div>
     </div>
-</div>
+    
+    <ng-template #noMovie>Looking for movie...</ng-template>
+    <ng-template #noReviews>
+        <div id="noReviews">There are no reviews for this title</div>
+    </ng-template>
+    <ng-template #noReviewStats>Looking for review stats...</ng-template>
+</section>
 <app-footer-bar></app-footer-bar>
-
-<ng-template #noMovie>Looking for movie...</ng-template>
-<ng-template #noReviews>
-    <div id="noReviews">There are no reviews for this title</div>
-</ng-template>
-<ng-template #noReviewStats>Looking for review stats...</ng-template>

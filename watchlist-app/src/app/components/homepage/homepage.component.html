@@ -1,5 +1,7 @@
 <app-header-bar></app-header-bar>
-<div *ngFor="let g of genreIds">
-    <app-movie-list [genreId]="g"></app-movie-list>
-</div>
+<section>
+    <div *ngFor="let g of genreIds">
+        <app-movie-list [genreId]="g"></app-movie-list>
+    </div>
+</section>
 <app-footer-bar></app-footer-bar>
