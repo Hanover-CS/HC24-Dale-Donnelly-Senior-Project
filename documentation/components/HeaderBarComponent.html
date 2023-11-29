@@ -85,7 +85,7 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/HeaderBarComponent.html" >HeaderBarComponent</a>
+                                    <a href="../components/HeaderBarComponent.html"  class="active" >HeaderBarComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/HomepageComponent.html" >HomepageComponent</a>
@@ -94,7 +94,7 @@
                                     <a href="../components/MovieComponent.html" >MovieComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/MovieDetailsComponent.html"  class="active" >MovieDetailsComponent</a>
+                                    <a href="../components/MovieDetailsComponent.html" >MovieDetailsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/MovieListComponent.html" >MovieListComponent</a>
@@ -261,7 +261,7 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/HeaderBarComponent.html" >HeaderBarComponent</a>
+                                           <a href="../components/HeaderBarComponent.html"  class="active" >HeaderBarComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/HomepageComponent.html" >HomepageComponent</a>
@@ -270,7 +270,7 @@
                                            <a href="../components/MovieComponent.html" >MovieComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/MovieDetailsComponent.html"  class="active" >MovieDetailsComponent</a>
+                                           <a href="../components/MovieDetailsComponent.html" >MovieDetailsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/MovieListComponent.html" >MovieListComponent</a>
@@ -372,7 +372,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>MovieDetailsComponent</li>
+  <li>HeaderBarComponent</li>
 </ol>
 
 
@@ -390,18 +390,9 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/movie-details/movie-details.component.ts</code>
+    <code>src/app/components/header-bar/header-bar.component.ts</code>
 </p>
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Generates a MovieDetails component which displays title info and facilitates user interaction for reviewing the titles.</p>
-<p>Displayed info includes the title, overview, poster, and genres.</p>
-<p>Component page route is generated from the title&#39;s ID, which is then used to retrieve title data.</p>
-
-    </p>
 
 
 <section>
@@ -422,19 +413,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-movie-details</code></td>
+                <td class="col-md-9"><code>app-header-bar</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>movie-details.component.css</code></td>
+                <td class="col-md-9"><code>header-bar.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>movie-details.component.html</code></td>
+                <td class="col-md-9"><code>header-bar.component.html</code></td>
             </tr>
 
 
@@ -444,200 +435,19 @@
 
 
 
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(movieService: any, reviewService: any, route: <a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank" >ActivatedRoute</a>)</code>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        <h3 id="methods">Methods</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> Observable</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>Observable()</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        <h3 id="inputs">Properties</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> movie</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>movie:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> MovieData</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>MovieData:     <code>any</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> movieId</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>movieId:     <code>number</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> reviews</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>reviews:     <code>boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { ActivatedRoute } from &#x27;@angular/router&#x27;;
-import { Observable, from } from &#x27;rxjs&#x27;;
+            <pre><code class="hljs javascript">import { Component } from &#x27;@angular/core&#x27;;
 
-import { MovieService } from &#x27;src/app/services/movie.service&#x27;;
-import { ReviewService } from &#x27;src/app/services/review.service&#x27;;
-import { MovieData } from &#x27;src/lib/types/MovieData&#x27;;
-import { Review, ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
-import { GenreIdToGenre } from &#x27;src/lib/types/Genre&#x27;;
-
-/**
- * Generates a MovieDetails component which displays title info and facilitates user interaction for reviewing the titles.
- * 
- * Displayed info includes the title, overview, poster, and genres.
- * 
- * Component page route is generated from the title&#x27;s ID, which is then used to retrieve title data.
- */
 @Component({
-  selector: &#x27;app-movie-details&#x27;,
-  templateUrl: &#x27;./movie-details.component.html&#x27;,
-  styleUrls: [&#x27;./movie-details.component.css&#x27;]
+  selector: &#x27;app-header-bar&#x27;,
+  templateUrl: &#x27;./header-bar.component.html&#x27;,
+  styleUrls: [&#x27;./header-bar.component.css&#x27;]
 })
-export class MovieDetailsComponent implements OnInit {
-  constructor(private movieService: MovieService, private reviewService: ReviewService, private route: ActivatedRoute) {}
+export class HeaderBarComponent {
 
-  movieId &#x3D; Number(this.route.snapshot.params[&#x27;id&#x27;]);
-  movie !: MovieData
-  reviews !: Observable&lt;Review[]&gt;;
-  genreIdToGenre &#x3D; GenreIdToGenre
-  reviewStats !: ReviewAverage
-
-  /**
-   * Constructs a Review interface object and calls Firestore to post the review to the database.
-   * @param rating Number, score of the review to be posted to Firestore.
-   * @param content String, text content of the review to be posted to Firestore.
-   */
-  postReview(rating: number, content: string) {
-    const formattedDate &#x3D; this.createDate();
-    const review: Review &#x3D; {
-      content, 
-      rating, 
-      movieId: this.movieId, 
-      date: formattedDate
-    };
-    this.clearUserInput();
-    this.reviewService.addReview(review)
-    this.getReviewStats()
-  }
-
-  /**
-   * Helper function to create a string for a date from a template in the MM/DD/YYYY format.
-   * @returns String, date in MM/DD/YYYY format.
-   */
-  private createDate() {
-    const date &#x3D; new Date();
-    const formattedDate &#x3D; &#x60;${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}&#x60;;
-    return formattedDate;
-  }
-
-  /**
-   * Helper function to clear user input after they have posted a review. 
-   * Input area for review content returns to placeholder text.
-   */
-  private clearUserInput() {
-    const reviewTextArea &#x3D; document.getElementById(&#x27;reviewTextInput&#x27;) as HTMLTextAreaElement;
-    if (reviewTextArea) {
-      reviewTextArea.value &#x3D; &quot;&quot;;
-    }
-  }
-
-  ngOnInit() {
-    this.movieService.getMovieById(this.movieId).subscribe(
-      (movie&#x3D;&gt; {
-          this.movie &#x3D; movie
-        })
-    )
-    this.reviews &#x3D; this.reviewService.getReviewsForMovie(this.movieId);
-    this.getReviewStats();
-  }
-
-  private getReviewStats() {
-    from(this.reviewService.getReviewStats(this.movieId)).subscribe(
-      stats &#x3D;&gt; {
-        this.reviewStats &#x3D; stats;
-      }
-    );
-  }
 }
 </code></pre>
         </div>
