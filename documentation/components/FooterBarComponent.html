@@ -85,13 +85,13 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/FooterBarComponent.html" >FooterBarComponent</a>
+                                    <a href="../components/FooterBarComponent.html"  class="active" >FooterBarComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/HeaderBarComponent.html" >HeaderBarComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/HomepageComponent.html"  class="active" >HomepageComponent</a>
+                                    <a href="../components/HomepageComponent.html" >HomepageComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/MovieComponent.html" >MovieComponent</a>
@@ -264,13 +264,13 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/FooterBarComponent.html" >FooterBarComponent</a>
+                                           <a href="../components/FooterBarComponent.html"  class="active" >FooterBarComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/HeaderBarComponent.html" >HeaderBarComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/HomepageComponent.html"  class="active" >HomepageComponent</a>
+                                           <a href="../components/HomepageComponent.html" >HomepageComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/MovieComponent.html" >MovieComponent</a>
@@ -378,7 +378,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>HomepageComponent</li>
+  <li>FooterBarComponent</li>
 </ol>
 
 
@@ -396,16 +396,9 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/homepage/homepage.component.ts</code>
+    <code>src/app/components/footer-bar/footer-bar.component.ts</code>
 </p>
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Homepage Component populates the landing page with movie lists.<br>Iterates over the list of GenreIds to create a list of movies for each one.</p>
-
-    </p>
 
 
 <section>
@@ -426,19 +419,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-homepage</code></td>
+                <td class="col-md-9"><code>app-footer-bar</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>homepage.component.css</code></td>
+                <td class="col-md-9"><code>footer-bar.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>homepage.component.html</code></td>
+                <td class="col-md-9"><code>footer-bar.component.html</code></td>
             </tr>
 
 
@@ -450,44 +443,17 @@
 
 
 
-    <section>
-        <h3 id="inputs">Properties</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> genreIds</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>genreIds:     <code>any</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>GenreIds</code>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { Component } from &#x27;@angular/core&#x27;;
-import { GenreIds } from &#x27;src/lib/types/Genre&#x27;;
-/**
- * Homepage Component populates the landing page with movie lists.
- * Iterates over the list of GenreIds to create a list of movies for each one.
- */
+
 @Component({
-  selector: &#x27;app-homepage&#x27;,
-  templateUrl: &#x27;./homepage.component.html&#x27;,
-  styleUrls: [&#x27;./homepage.component.css&#x27;]
+  selector: &#x27;app-footer-bar&#x27;,
+  templateUrl: &#x27;./footer-bar.component.html&#x27;,
+  styleUrls: [&#x27;./footer-bar.component.css&#x27;]
 })
-export class HomepageComponent {
-  genreIds &#x3D; GenreIds
+export class FooterBarComponent {
+
 }
 </code></pre>
         </div>
