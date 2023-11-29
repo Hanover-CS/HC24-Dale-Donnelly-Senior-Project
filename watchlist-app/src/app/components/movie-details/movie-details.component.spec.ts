@@ -8,6 +8,8 @@ import { MovieService } from 'src/app/services/movie.service';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 import { ReviewServiceStub, testReviews } from 'src/lib/stubs/ReviewServiceStub';
 import { MovieServiceStub, testMovie, testId } from 'src/lib/stubs/MovieServiceStub';
+import { HeaderBarComponent } from '../header-bar/header-bar.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
@@ -16,10 +18,12 @@ describe('MovieDetailsComponent', () => {
   beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [
-        MovieDetailsComponent
+        MovieDetailsComponent,
+        HeaderBarComponent
       ],
       imports: [
         HttpClientTestingModule,
+        RouterTestingModule,
         StarRatingModule
       ],
       providers: [
