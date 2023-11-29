@@ -67,7 +67,7 @@ describe('MovieDetailsComponent', () => {
     expect(img.src).withContext('img has correct image path').toEqual(`${testMovie.imagePath}`)
     expect(title).withContext('title matches').toEqual(testMovie.title)
     expect(overview).withContext('overview matches').toEqual(testMovie.overview)
-    expect(releaseDate).withContext('releaseDate matches').toEqual(testMovie.releaseDate)
+    expect(releaseDate).withContext('releaseDate matches').toEqual('Released On: ' + testMovie.releaseDate)
     expect($genreSpans.length).toEqual(1)
     expect($genreSpans[0].textContent).toEqual('Action')
   })
