@@ -77,7 +77,9 @@ export class ReviewService {
 
   async getReviewStats(movieId: number): Promise<ReviewAverage> {
     const docRef = doc(this.firestore, 'reviewAverage/'+movieId)
+    console.log('doc ref created')
     const reviewAverage = await getDoc(docRef)
+    console.log('get doc call successful')
     if (reviewAverage.data()) {
        return this.mapToReviewAverage(reviewAverage.data())
     }

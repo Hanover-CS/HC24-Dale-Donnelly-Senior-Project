@@ -76,4 +76,24 @@ describe('ReviewService', () => {
       done()
     })
   })
+
+  xit('should update stat doc when adding a new review', async () => {
+    console.log('test start')
+    // const oldStats = await service.getReviewStats(0)
+    console.log('got old stats') 
+    const newReview: Review = {
+      content: 'test',
+      rating: 5,
+      movieId: 0,
+      date: 'date'
+    } 
+    service.addReview(newReview)
+    console.log('added new review')
+    const newStats = await service.getReviewStats(0)
+    console.log('got new stats')
+
+    //expect(newStats.ratingCount).toEqual(oldStats.ratingCount+1)
+    //expect(newStats.totalRating).toEqual(oldStats.totalRating+5)
+    expect(newStats.avgRating).toEqual(newStats.totalRating/newStats.ratingCount)
+  })
 });
