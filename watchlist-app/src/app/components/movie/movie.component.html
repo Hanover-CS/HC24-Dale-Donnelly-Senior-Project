@@ -1,7 +1,10 @@
 <section>
     <a [routerLink]="['movie-details/', movie.id]">
-        <star-rating [readOnly]="true" [rating]="this.reviewStats.avgRating"></star-rating>
+        <star-rating *ngIf="this.reviewStats; else noStats"
+        [readOnly]="true" [rating]="this.reviewStats.avgRating"></star-rating>
         <img id="movieImg" src="{{movie.imagePath}}" alt="{{movie.title}} Poster" />
         <span id="movieTitle">{{movie.title}}</span>
     </a>
 </section>
+
+<ng-template #noStats>Fetching stats...</ng-template>
