@@ -5,6 +5,7 @@ import { MovieListComponent } from '../movie-list/movie-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HeaderBarComponent } from '../header-bar/header-bar.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FooterBarComponent } from '../footer-bar/footer-bar.component';
 
 describe('HomepageComponent', () => {
   let component: HomepageComponent;
@@ -12,7 +13,7 @@ describe('HomepageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomepageComponent, MovieListComponent, HeaderBarComponent],
+      declarations: [HomepageComponent, MovieListComponent, HeaderBarComponent, FooterBarComponent],
       imports: [HttpClientTestingModule, RouterTestingModule]
     });
     fixture = TestBed.createComponent(HomepageComponent);

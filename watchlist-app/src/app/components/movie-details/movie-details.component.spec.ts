@@ -10,6 +10,7 @@ import { ReviewServiceStub, testReviews } from 'src/lib/stubs/ReviewServiceStub'
 import { MovieServiceStub, testMovie, testId } from 'src/lib/stubs/MovieServiceStub';
 import { HeaderBarComponent } from '../header-bar/header-bar.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FooterBarComponent } from '../footer-bar/footer-bar.component';
 
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
@@ -19,7 +20,8 @@ describe('MovieDetailsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         MovieDetailsComponent,
-        HeaderBarComponent
+        HeaderBarComponent,
+        FooterBarComponent
       ],
       imports: [
         HttpClientTestingModule,
