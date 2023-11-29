@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
 import { StarRatingModule } from 'angular-star-rating';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { HeaderBarComponent } from './components/header-bar/header-bar.component';
 /**
  * AppModule describes how to construct the app for Angular.
  * 
@@ -27,7 +28,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     MovieComponent,
     MovieListComponent,
     MovieDetailsComponent,
-    HomepageComponent
+    HomepageComponent,
+    HeaderBarComponent
   ],
   imports: [
     BrowserModule,
