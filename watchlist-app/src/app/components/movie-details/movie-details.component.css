@@ -2,6 +2,38 @@ section {
     margin-left: 20px;
 }
 
+#details {
+    display: flex;
+    flex-direction: row;
+}
+
+#visualDetails, #textDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+#textDetails {
+    margin-left: 10px;
+    padding-top: 30px;
+}
+
+#textDetails span {
+    margin-bottom: 10px;
+}
+
+#movieImg {
+    margin-bottom: 10px;
+}
+
+#title {
+    font-size: larger;
+    text-decoration: underline;
+}
+
+#overview {
+    max-width: 65%;
+}
+
 #rating {
     display: block;
 }
@@ -11,10 +43,9 @@ section {
 }
 
 .review, #noReviews {
-    max-width: 30%;
     border-top: 1px solid black;
     padding: 10px;
-    background-color: #343434;
+    background-color: #4a4a4a;
 }
 
 .review:last-of-type, #noReviews {
@@ -46,4 +77,25 @@ h3 {
     border-radius: 20px;
     max-width: 35%;
     text-align: center;
+}
+
+#reviewSection {
+    display: flex;
+}
+
+#postedReviews {
+    padding-right: 20px;
+    width: 35%;
+}
+
+#postBtn {
+    background-color: #0079FF;
+    color: white;
+    height: 2em;
+    border-radius: 5px;
+    border: none;
+}
+
+#postBtn:hover {
+    background-color: #005bc4;
 }
