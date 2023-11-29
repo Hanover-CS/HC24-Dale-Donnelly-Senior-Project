@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment.prod';
 import { StarRatingModule } from 'angular-star-rating';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { HeaderBarComponent } from './components/header-bar/header-bar.component';
+import { FooterBarComponent } from './components/footer-bar/footer-bar.component';
 /**
  * AppModule describes how to construct the app for Angular.
  * 
@@ -29,7 +30,8 @@ import { HeaderBarComponent } from './components/header-bar/header-bar.component
     MovieListComponent,
     MovieDetailsComponent,
     HomepageComponent,
-    HeaderBarComponent
+    HeaderBarComponent,
+    FooterBarComponent
   ],
   imports: [
     BrowserModule,

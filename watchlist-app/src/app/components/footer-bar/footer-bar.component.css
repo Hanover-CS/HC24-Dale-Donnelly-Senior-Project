@@ -1,0 +1,28 @@
+div {
+    background-color: #079ff0;
+    overflow: hidden;
+    margin-top: 10px;
+    font-size: smaller;
+}
+
+img {
+    width: 100px;
+    height: 50px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+}
