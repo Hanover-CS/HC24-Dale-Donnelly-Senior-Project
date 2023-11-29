@@ -1,4 +1,23 @@
 div {
-    background-color: #0079FF;
-    max-width: 100%;
+    background-color: #079ff0;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
+    font-size: 1.5em;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
 }
