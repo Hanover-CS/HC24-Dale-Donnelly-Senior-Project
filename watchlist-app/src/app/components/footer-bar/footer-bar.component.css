@@ -1,5 +1,5 @@
 div {
-    background-color: #079ff0;
+    background-color: #272727;
     overflow: hidden;
     margin-top: 10px;
     font-size: smaller;
@@ -20,9 +20,12 @@ li {
     float: left;
 }
 
-li a {
+li a, li span {
     display: block;
-    text-align: center;
     padding: 10px 10px;
     text-decoration: none;
+}
+
+li span {
+    padding-top: 20px;
 }
