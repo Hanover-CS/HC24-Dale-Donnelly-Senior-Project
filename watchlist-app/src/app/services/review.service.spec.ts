@@ -4,7 +4,8 @@ import { ReviewService } from './review.service';
 import { Firestore, FirestoreModule, connectFirestoreEmulator, getFirestore, initializeFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FirebaseAppModule, getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
-import { Review } from 'src/lib/types/Review';
+import { Review, ReviewAverage } from 'src/lib/types/Review';
+import { from } from 'rxjs';
 
 const testReview: Review = {
   content: 'test',
@@ -12,6 +13,8 @@ const testReview: Review = {
   movieId: 0,
   date: '10/26/2023'
 }
+
+const testReviewStats: ReviewAverage = {ratingCount: 1, totalRating: 3, avgRating: 3}
 
 const testReview_2: Review = {
   content: 'test',
@@ -74,6 +77,38 @@ describe('ReviewService', () => {
     const $movieReviews = service.getReviewsForMovie(0)
     $movieReviews.subscribe(reviews => {
       expect(reviews[0]).toEqual(testReview)
+      done()
+    })
+  })
+
+  // The following tests are disabled and will have no effect when running tests or viewing coverage.
+  // They are disabled because of some issue preventing the offline emulator from retrieving individual
+  // database documents. The tests listed above perform operations and retrieve from whole collections,
+  // so the issue does not seem to affect them.
+
+  xit('should update stat doc when adding a new review', async () => {
+    console.log('test start')
+    const oldStats = await service.getReviewStats(0)
+    console.log('got old stats') 
+    const newReview: Review = {
+      content: 'test',
+      rating: 5,
+      movieId: 0,
+      date: 'date'
+    } 
+    service.addReview(newReview)
+    console.log('added new review')
+    const newStats = await service.getReviewStats(0)
+    console.log('got new stats')
+
+    expect(newStats.ratingCount).toEqual(oldStats.ratingCount+1)
+    expect(newStats.totalRating).toEqual(oldStats.totalRating+5)
+    expect(newStats.avgRating).toEqual(newStats.totalRating/newStats.ratingCount)
+  })
+
+  xit('should retrieve review stats for a movie', (done) => {
+    from(service.getReviewStats(0)).subscribe( stats => {
+      expect(stats).toEqual({ratingCount: 1, totalRating: 3, avgRating: 3})
       done()
     })
   })
