@@ -60,7 +60,7 @@ export class ReviewService {
   }
 
   /**
-   * Adds the parameter review to the Firestore database.
+   * Adds the parameter review to the Firestore database and updates associated review stats.
    * @param review 
    * @returns Doc reference for new review
    */
@@ -75,6 +75,12 @@ export class ReviewService {
     return newReview;
   }
 
+  /**
+   * Retrieves the stat document for a given movie ID or calls a helper to generate a new stats document if
+   * one does not exist.
+   * @param movieId 
+   * @returns 
+   */
   async getReviewStats(movieId: number): Promise<ReviewAverage> {
     const docRef = doc(this.firestore, 'reviewAverage/'+movieId)
     const reviewAverage = await getDoc(docRef)
@@ -91,6 +97,12 @@ export class ReviewService {
     }
   }
 
+  /**
+   * A helper function that calculates the number of ratings, total rating score, and average rating score 
+   * for a given title.
+   * @param movieId 
+   * @returns 
+   */
   private getRatingStats(movieId: number): Observable<ReviewAverage> {
       const reviews = this.getReviewsForMovie(movieId)
       const data: Observable<ReviewAverage> = reviews.pipe(
