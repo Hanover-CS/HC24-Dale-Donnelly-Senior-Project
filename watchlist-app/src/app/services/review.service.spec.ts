@@ -20,10 +20,11 @@ const testReview_2: Review = {
   date: '10/26/2023'
 }
 
+const testReviews = [testReview, testReview_2]
+
 describe('ReviewService', () => {
 
   let service: ReviewService;
-  let testReviews: Review[] = [];
 
   beforeAll(() => {
     TestBed.configureTestingModule({
@@ -46,8 +47,8 @@ describe('ReviewService', () => {
     service = TestBed.inject(ReviewService);
     service.addReview(testReview)
     service.addReview(testReview_2)
-    testReviews = [testReview, testReview_2]
   })
+
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -75,25 +76,5 @@ describe('ReviewService', () => {
       expect(reviews[0]).toEqual(testReview)
       done()
     })
-  })
-
-  xit('should update stat doc when adding a new review', async () => {
-    console.log('test start')
-    // const oldStats = await service.getReviewStats(0)
-    console.log('got old stats') 
-    const newReview: Review = {
-      content: 'test',
-      rating: 5,
-      movieId: 0,
-      date: 'date'
-    } 
-    service.addReview(newReview)
-    console.log('added new review')
-    const newStats = await service.getReviewStats(0)
-    console.log('got new stats')
-
-    //expect(newStats.ratingCount).toEqual(oldStats.ratingCount+1)
-    //expect(newStats.totalRating).toEqual(oldStats.totalRating+5)
-    expect(newStats.avgRating).toEqual(newStats.totalRating/newStats.ratingCount)
   })
 });
