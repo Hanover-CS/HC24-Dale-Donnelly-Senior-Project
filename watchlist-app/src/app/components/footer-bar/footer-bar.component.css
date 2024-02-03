@@ -3,6 +3,9 @@ div {
     overflow: hidden;
     margin-top: 10px;
     font-size: smaller;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 img {
