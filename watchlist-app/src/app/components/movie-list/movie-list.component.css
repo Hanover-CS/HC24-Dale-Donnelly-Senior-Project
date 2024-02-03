@@ -13,3 +13,7 @@ ul {
 li { 
     flex-direction: row;
 }
+
+ul::-webkit-scrollbar {
+    width: 1em;
+}
