@@ -1,5 +1,6 @@
-<app-header-bar></app-header-bar>
-<section>
+<div id="holder">
+    <div id="header"><app-header-bar></app-header-bar></div>
+    <div id="detailBody">
     <div *ngIf="movie; noMovie">
         <div id="details">
             <div id="visualDetails">
@@ -47,5 +48,6 @@
         <div id="noReviews">There are no reviews for this title</div>
     </ng-template>
     <ng-template #noReviewStats>Looking for review stats...</ng-template>
-</section>
-<app-footer-bar></app-footer-bar>
+    </div>
+    <div id="footer"><app-footer-bar></app-footer-bar></div>
+</div>

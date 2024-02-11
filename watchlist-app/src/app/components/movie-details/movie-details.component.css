@@ -99,3 +99,21 @@ h3 {
 #postBtn:hover {
     background-color: #005bc4;
 }
+
+#holder {
+    min-height: 100%;
+    position: relative;
+}
+
+#detailsBody {
+    padding-bottom: 70px;
+}
+
+#footer {
+    height: 70px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
