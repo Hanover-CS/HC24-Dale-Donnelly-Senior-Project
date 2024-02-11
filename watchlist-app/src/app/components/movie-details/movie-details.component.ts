@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, from } from 'rxjs';
 
-import { MovieService } from 'src/app/services/movie.service';
-import { ReviewService } from 'src/app/services/review.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
+import { ReviewService } from 'src/app/services/review-service/review.service';
 import { MovieData } from 'src/lib/types/MovieData';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
 import { GenreIdToGenre } from 'src/lib/types/Genre';

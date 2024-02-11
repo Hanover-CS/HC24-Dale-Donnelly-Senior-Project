@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MovieComponent } from './movie.component';
 import { MovieData } from 'src/lib/types/MovieData';
 import { RouterTestingModule } from '@angular/router/testing'
-import { ReviewService } from 'src/app/services/review.service';
+import { ReviewService } from 'src/app/services/review-service/review.service';
 import { ReviewAverage } from 'src/lib/types/Review';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 import { ReviewServiceStub } from 'src/lib/stubs/ReviewServiceStub';

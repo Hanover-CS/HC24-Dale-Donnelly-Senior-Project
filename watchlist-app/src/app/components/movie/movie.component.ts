@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ReviewService } from 'src/app/services/review.service';
+import { ReviewService } from 'src/app/services/review-service/review.service';
 import { MovieData } from 'src/lib/types/MovieData';
 import { ReviewAverage } from 'src/lib/types/Review';
 /**

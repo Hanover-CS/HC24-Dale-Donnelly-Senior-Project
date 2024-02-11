@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { MovieData } from 'src/lib/types/MovieData';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { GenreIdToGenre, GenreIds } from 'src/lib/types/Genre';
 
 /**

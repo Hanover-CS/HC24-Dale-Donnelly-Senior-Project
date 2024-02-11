@@ -2,9 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieDetailsComponent } from './movie-details.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ReviewService } from 'src/app/services/review.service';
+import { ReviewService } from 'src/app/services/review-service/review.service';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 import { ReviewServiceStub, testReviews } from 'src/lib/stubs/ReviewServiceStub';
 import { MovieServiceStub, testMovie, testId } from 'src/lib/stubs/MovieServiceStub';
