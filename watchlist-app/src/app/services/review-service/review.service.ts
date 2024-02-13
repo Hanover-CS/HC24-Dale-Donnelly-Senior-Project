@@ -86,7 +86,7 @@ export class ReviewService {
    * Retrieves the stat document for a given movie ID or calls a helper to generate a new stats document if
    * one does not exist.
    * @param movieId 
-   * @returns 
+   * @returns a Promise contaning a ReviewAverage instance with data for a title
    */
   async getReviewStats(movieId: number): Promise<ReviewAverage> {
     const docRef = doc(this.firestore, reviewAveragePath+movieId)
@@ -114,7 +114,7 @@ export class ReviewService {
    * A helper function that calculates the number of ratings, total rating score, and average rating score 
    * for a given title.
    * @param movieId 
-   * @returns 
+   * @returns an Observable ReviewAverage instance
    */
   private getRatingStats(movieId: number): Observable<ReviewAverage> {
       const reviews = this.getReviewsForMovie(movieId)
@@ -138,6 +138,11 @@ export class ReviewService {
   }
 
   // eslint-disable-next-line
+  /**
+   * A helper function that maps retrieved firestore documents to the ReviewAverage type
+   * @param d Document data pulled from firestore
+   * @returns a ReviewAverage istance with provided data
+   */
   private mapToReviewAverage(d: any): ReviewAverage {
     return {
       ratingCount: d.ratingCount,
