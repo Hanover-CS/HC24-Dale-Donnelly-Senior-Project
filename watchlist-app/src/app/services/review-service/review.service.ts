@@ -2,6 +2,7 @@ import { Injectable, ErrorHandler } from '@angular/core';
 import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
+import { reviewAveragePath, reviewCollectionPath } from 'src/lib/types/urls';
 
 /**
  * ReviewService is responsible for requesting and retrieving review data from the project's Firestore database.
@@ -11,7 +12,7 @@ import { Review, ReviewAverage } from 'src/lib/types/Review';
 })
 export class ReviewService {
   allReviews !: Observable<Review[]>
-  reviewCollection = collection(this.firestore, 'reviews')
+  reviewCollection = collection(this.firestore, reviewCollectionPath)
 
   /**
    * Constructor for creating a shared, injectable instance of the service.
@@ -69,7 +70,7 @@ export class ReviewService {
     .catch((err) => {
       this.errorHandler.handleError(err)
     })
-    const avgDocRef = doc(this.firestore, 'reviewAverage/'+review.movieId)
+    const avgDocRef = doc(this.firestore, reviewAveragePath+review.movieId)
     this.getRatingStats(review.movieId).subscribe(
       stats => {
         setDoc(avgDocRef, stats)
@@ -88,7 +89,7 @@ export class ReviewService {
    * @returns 
    */
   async getReviewStats(movieId: number): Promise<ReviewAverage> {
-    const docRef = doc(this.firestore, 'reviewAverage/'+movieId)
+    const docRef = doc(this.firestore, reviewAveragePath+movieId)
     const reviewAverage = await getDoc(docRef)
     if (reviewAverage.data()) {
        return this.mapToReviewAverage(reviewAverage.data())
