@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ErrorHandler } from '@angular/core';
 import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
@@ -18,7 +18,7 @@ export class ReviewService {
    * Provides a shared firestore instance for database operations.
    * @param firestore 
    */
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private errorHandler: ErrorHandler) {}
 
   /**
    * Queries the Firestore database for all reviews. 
@@ -66,10 +66,16 @@ export class ReviewService {
    */
   async addReview(review: Review) {
     const newReview = await addDoc(this.reviewCollection, review)
+    .catch((err) => {
+      this.errorHandler.handleError(err)
+    })
     const avgDocRef = doc(this.firestore, 'reviewAverage/'+review.movieId)
     this.getRatingStats(review.movieId).subscribe(
       stats => {
         setDoc(avgDocRef, stats)
+        .catch((err) => {
+          this.errorHandler.handleError(err)
+        })
       }
     )
     return newReview;
