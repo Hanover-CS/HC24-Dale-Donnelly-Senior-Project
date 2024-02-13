@@ -1,5 +1,5 @@
 import { Injectable, ErrorHandler } from '@angular/core';
-import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc, DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Review, ReviewAverage } from 'src/lib/types/Review';
 import { reviewAveragePath, reviewCollectionPath } from 'src/lib/types/urls';
@@ -67,7 +67,7 @@ export class ReviewService {
    */
   async addReview(review: Review) {
     const newReview = await addDoc(this.reviewCollection, review)
-    .catch((err) => {
+    .catch((err: Error) => {
       this.errorHandler.handleError(err)
     })
     const avgDocRef = doc(this.firestore, reviewAveragePath+review.movieId)
@@ -91,7 +91,10 @@ export class ReviewService {
   async getReviewStats(movieId: number): Promise<ReviewAverage> {
     const docRef = doc(this.firestore, reviewAveragePath+movieId)
     const reviewAverage = await getDoc(docRef)
-    if (reviewAverage.data()) {
+    .catch((err: Error) => {
+      this.handleError(err);
+    })
+    if (reviewAverage instanceof DocumentSnapshot && reviewAverage.data()) {
        return this.mapToReviewAverage(reviewAverage.data())
     }
     else {
@@ -99,6 +102,9 @@ export class ReviewService {
           const data = this.getRatingStats(movieId)
           data.subscribe(d => {
             setDoc(docRef, d)
+            .catch((err: Error) => {
+              this.handleError(err)
+            })
           })
       })
     }
@@ -138,5 +144,14 @@ export class ReviewService {
       totalRating: d.totalRating,
       avgRating: d.avgRating
     }
+  }
+
+  /**
+   * A helper function that calls the ErrorHandler's handleError method with any caught errors.
+   * The ErrorHandler's handlerError function console logs errors.
+   * @param err 
+   */
+  private handleError(err: Error) {
+    this.errorHandler.handleError(err);
   }
 }
