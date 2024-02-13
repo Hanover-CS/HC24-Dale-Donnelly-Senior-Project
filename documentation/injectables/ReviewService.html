@@ -458,10 +458,11 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc } from &#x27;@angular/fire/firestore&#x27;;
+        <pre><code class="hljs javascript">import { Injectable, ErrorHandler } from &#x27;@angular/core&#x27;;
+import { Firestore, collectionData, collection, query, addDoc, where, getDoc, doc, setDoc, DocumentSnapshot } from &#x27;@angular/fire/firestore&#x27;;
 import { Observable, map } from &#x27;rxjs&#x27;;
 import { Review, ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
+import { reviewAveragePath, reviewCollectionPath } from &#x27;src/lib/types/urls&#x27;;
 
 /**
  * ReviewService is responsible for requesting and retrieving review data from the project&#x27;s Firestore database.
@@ -471,14 +472,14 @@ import { Review, ReviewAverage } from &#x27;src/lib/types/Review&#x27;;
 })
 export class ReviewService {
   allReviews !: Observable&lt;Review[]&gt;
-  reviewCollection &#x3D; collection(this.firestore, &#x27;reviews&#x27;)
+  reviewCollection &#x3D; collection(this.firestore, reviewCollectionPath)
 
   /**
    * Constructor for creating a shared, injectable instance of the service.
    * Provides a shared firestore instance for database operations.
    * @param firestore 
    */
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private errorHandler: ErrorHandler) {}
 
   /**
    * Queries the Firestore database for all reviews. 
@@ -526,10 +527,16 @@ export class ReviewService {
    */
   async addReview(review: Review) {
     const newReview &#x3D; await addDoc(this.reviewCollection, review)
-    const avgDocRef &#x3D; doc(this.firestore, &#x27;reviewAverage/&#x27;+review.movieId)
+    .catch((err: Error) &#x3D;&gt; {
+      this.errorHandler.handleError(err)
+    })
+    const avgDocRef &#x3D; doc(this.firestore, reviewAveragePath+review.movieId)
     this.getRatingStats(review.movieId).subscribe(
       stats &#x3D;&gt; {
         setDoc(avgDocRef, stats)
+        .catch((err) &#x3D;&gt; {
+          this.errorHandler.handleError(err)
+        })
       }
     )
     return newReview;
@@ -539,12 +546,15 @@ export class ReviewService {
    * Retrieves the stat document for a given movie ID or calls a helper to generate a new stats document if
    * one does not exist.
    * @param movieId 
-   * @returns 
+   * @returns a Promise contaning a ReviewAverage instance with data for a title
    */
   async getReviewStats(movieId: number): Promise&lt;ReviewAverage&gt; {
-    const docRef &#x3D; doc(this.firestore, &#x27;reviewAverage/&#x27;+movieId)
+    const docRef &#x3D; doc(this.firestore, reviewAveragePath+movieId)
     const reviewAverage &#x3D; await getDoc(docRef)
-    if (reviewAverage.data()) {
+    .catch((err: Error) &#x3D;&gt; {
+      this.handleError(err);
+    })
+    if (reviewAverage instanceof DocumentSnapshot &amp;&amp; reviewAverage.data()) {
        return this.mapToReviewAverage(reviewAverage.data())
     }
     else {
@@ -552,6 +562,9 @@ export class ReviewService {
           const data &#x3D; this.getRatingStats(movieId)
           data.subscribe(d &#x3D;&gt; {
             setDoc(docRef, d)
+            .catch((err: Error) &#x3D;&gt; {
+              this.handleError(err)
+            })
           })
       })
     }
@@ -561,7 +574,7 @@ export class ReviewService {
    * A helper function that calculates the number of ratings, total rating score, and average rating score 
    * for a given title.
    * @param movieId 
-   * @returns 
+   * @returns an Observable ReviewAverage instance
    */
   private getRatingStats(movieId: number): Observable&lt;ReviewAverage&gt; {
       const reviews &#x3D; this.getReviewsForMovie(movieId)
@@ -585,12 +598,26 @@ export class ReviewService {
   }
 
   // eslint-disable-next-line
+  /**
+   * A helper function that maps retrieved firestore documents to the ReviewAverage type
+   * @param d Document data pulled from firestore
+   * @returns a ReviewAverage istance with provided data
+   */
   private mapToReviewAverage(d: any): ReviewAverage {
     return {
       ratingCount: d.ratingCount,
       totalRating: d.totalRating,
       avgRating: d.avgRating
     }
+  }
+
+  /**
+   * A helper function that calls the ErrorHandler&#x27;s handleError method with any caught errors.
+   * The ErrorHandler&#x27;s handlerError function console logs errors.
+   * @param err 
+   */
+  private handleError(err: Error) {
+    this.errorHandler.handleError(err);
   }
 }
 </code></pre>
